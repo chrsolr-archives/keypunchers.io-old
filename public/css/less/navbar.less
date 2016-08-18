@@ -1,0 +1,30 @@
+@import 'variables.less';
+
+
+
+.navbar {
+    background-color: @color-white;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    min-height: @navbar-height;
+
+    .navbar-brand {
+        top: 50%;
+        position: absolute;
+        .transform(translate3d(0, -50%, 0));
+    }
+
+    .navbar-toggle {
+        border: none;
+        .transform(translate3d(0, 50%, 0));
+
+        &:hover, &:active {
+            background-color: transparent;
+        }
+    }
+
+    #navbar-top {
+        .transform(translate3d(0, 32%, 0));
+    }
+}

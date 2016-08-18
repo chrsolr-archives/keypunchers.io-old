@@ -27,7 +27,7 @@ const config = (() => {
             order: [
                 `**/typescript/**/*.ts`
             ],
-            config: {
+            tsConfig: {
                 "compilerOptions": {
                     module: 'amd',
                     target: 'es5',

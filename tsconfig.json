@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es5",
+        "removeComments": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "noImplicitReturns": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false,
+        "outDir": "./public/js/",
+        "declaration": true
+    },
+    "files": ["public/typescript/modules/bootstrapper.ts",
+        "public/typescript/scripts/index.ts"
+    ]
+}
