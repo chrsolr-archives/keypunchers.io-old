@@ -1,0 +1,10 @@
+.c9
+.idea
+typings
+node_modules
+npm-debug.log
+public/libs/*
+bower_components
+public/css/*.css
+!public/css/style.css
+!public/css/style.min.css

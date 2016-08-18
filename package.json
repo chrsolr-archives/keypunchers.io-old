@@ -1,0 +1,38 @@
+{
+  "name": "keypunchers.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js",
+    "postinstall": "bower cache clean && bower install"
+  },
+  "author": "Christian Soler",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.5.9",
+    "password-hash": "^1.2.2",
+    "sendgrid": "^4.0.1",
+    "pug": "^2.0.0-alpha6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-minify": "0.0.14",
+    "gulp-rename": "^1.2.2",
+    "gulp-tsconfig": "^0.1.0",
+    "gulp-typescript": "^2.13.6",
+    "mocha": "^3.0.2",
+    "typescript": "^1.8.10"
+  }
+}

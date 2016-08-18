@@ -1,0 +1,25 @@
+{
+  "name": "keypunchers.io",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Christian Soler"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "font-awesome": "^4.6.3",
+    "bootstrap": "^3.3.7",
+    "requirejs": "^2.2.0"
+  }
+}
