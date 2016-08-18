@@ -8,6 +8,7 @@
 }
 .navbar .navbar-brand {
   line-height: 50px;
+  font-weight: 700;
 }
 .navbar .navbar-toggle {
   border: none;
