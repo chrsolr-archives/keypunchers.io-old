@@ -3,4 +3,18 @@
 section.banner {
     background-color: @color-white;
     padding: 5rem;
+
+    span {
+        &:nth-child(1) {
+            color: @color-brand-primary;
+        }
+
+        &:nth-child(2) {
+            color: @color-brand-accent;
+        }
+
+        &:nth-child(3) {
+            color: @color-brand-secondary;
+        }
+    }
 }

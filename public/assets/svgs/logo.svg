@@ -1,7 +1,7 @@
 <svg id="kp-logo" data-name="kp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.39 354.11" class="kp-logo">
   <style>
-    .kp-logo-bg-primary { fill: black; }
-    .kp-logo-bg-accent { fill: red; }
+    .kp-logo-bg-primary { fill: #1f7a7a; }
+    .kp-logo-bg-accent { fill: #cc3434; }
   </style>
   <title>KeyPunchers</title>
   <polygon points="23.96 225.03 23.57 224.65 54.95 193.27 54.95 54.39 0.56 0 0.56 354.11 54.95 354.11 54.95 256.79 23.57 225.41 23.96 225.03" class="kp-logo-bg-primary"></polygon>
@@ -11,5 +11,5 @@
   <polygon points="184.13 354.11 238.53 354.11 238.53 252.5 184.13 198.11 184.13 354.11" class="kp-logo-bg-primary"></polygon>
   <polygon class="kp-logo-bg-accent" points="238.53 160 172.07 93.54 133.61 132 238.53 236.92 238.53 160"></polygon>
   <path d="M254.21,296.18h.1a59.91,59.91,0,0,0,21.35-3.92L254.21,270.2Z" class="kp-logo-bg-accent"></path>
-  <path d="M254.31,176h-.1v76.58l33.46,33.46a60,60,0,0,0,26.72-50c0-.2,0-.39,0-.58L254.9,176Z"></path>
+  <path d="M254.31,176h-.1v76.58l33.46,33.46a60,60,0,0,0,26.72-50c0-.2,0-.39,0-.58L254.9,176Z" class="kp-logo-bg-primary"></path>
 </svg>

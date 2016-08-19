@@ -1,3 +1,137 @@
+/* CSS - Cascading Style Sheet */
+/* Palette color codes */
+/* Palette URL: http://paletton.com/#uid=62P0u0knOpyehzQjtsIr7l1v-g6 */
+/* Feel free to copy&paste color codes to your application */
+/* As hex codes */
+.color-primary-0 {
+  color: #2AA32A;
+}
+/* Main Primary color */
+.color-primary-1 {
+  color: #74D274;
+}
+.color-primary-2 {
+  color: #48B748;
+}
+.color-primary-3 {
+  color: #148614;
+}
+.color-primary-4 {
+  color: #016701;
+}
+.color-secondary-1-0 {
+  color: #1F7A7A;
+}
+/* Main Secondary color (1) */
+.color-secondary-1-1 {
+  color: #5CA5A5;
+}
+.color-secondary-1-2 {
+  color: #368989;
+}
+.color-secondary-1-3 {
+  color: #0F6565;
+}
+.color-secondary-1-4 {
+  color: #014D4D;
+}
+.color-secondary-2-0 {
+  color: #8FBE31;
+}
+/* Main Secondary color (2) */
+.color-secondary-2-1 {
+  color: #CCF085;
+}
+.color-secondary-2-2 {
+  color: #AAD654;
+}
+.color-secondary-2-3 {
+  color: #709C18;
+}
+.color-secondary-2-4 {
+  color: #507802;
+}
+.color-complement-0 {
+  color: #CC3434;
+}
+/* Main Complement color */
+.color-complement-1 {
+  color: #FF8D8D;
+}
+.color-complement-2 {
+  color: #E55A5A;
+}
+.color-complement-3 {
+  color: #A81A1A;
+}
+.color-complement-4 {
+  color: #800202;
+}
+/* As RGBa codes */
+.rgba-primary-0 {
+  color: #2aa32a;
+}
+/* Main Primary color */
+.rgba-primary-1 {
+  color: #74d274;
+}
+.rgba-primary-2 {
+  color: #48b748;
+}
+.rgba-primary-3 {
+  color: #148614;
+}
+.rgba-primary-4 {
+  color: #016701;
+}
+.rgba-secondary-1-0 {
+  color: #1f7a7a;
+}
+/* Main Secondary color (1) */
+.rgba-secondary-1-1 {
+  color: #5ca5a5;
+}
+.rgba-secondary-1-2 {
+  color: #368989;
+}
+.rgba-secondary-1-3 {
+  color: #0f6565;
+}
+.rgba-secondary-1-4 {
+  color: #014d4d;
+}
+.rgba-secondary-2-0 {
+  color: #8fbe31;
+}
+/* Main Secondary color (2) */
+.rgba-secondary-2-1 {
+  color: #ccf085;
+}
+.rgba-secondary-2-2 {
+  color: #aad654;
+}
+.rgba-secondary-2-3 {
+  color: #709c18;
+}
+.rgba-secondary-2-4 {
+  color: #507802;
+}
+.rgba-complement-0 {
+  color: #cc3434;
+}
+/* Main Complement color */
+.rgba-complement-1 {
+  color: #ff8d8d;
+}
+.rgba-complement-2 {
+  color: #e55a5a;
+}
+.rgba-complement-3 {
+  color: #a81a1a;
+}
+.rgba-complement-4 {
+  color: #800202;
+}
 .text-center .kp-logo {
   margin-left: 3rem;
   width: 150px;
@@ -13,7 +147,6 @@
 .navbar .navbar-brand {
   line-height: 50px;
   font-weight: 600;
-  color: gray;
 }
 .navbar .navbar-toggle {
   border: none;
@@ -32,6 +165,15 @@
 section.banner {
   background-color: white;
   padding: 5rem;
+}
+section.banner span:nth-child(1) {
+  color: #1F7A7A;
+}
+section.banner span:nth-child(2) {
+  color: #CC3434;
+}
+section.banner span:nth-child(3) {
+  color: #2AA32A;
 }
 body {
   background-color: white;
