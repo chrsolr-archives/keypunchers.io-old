@@ -1,14 +1,6 @@
-.kp-logo {
-  width: 150px;
-}
-.kp-logo .kp-logo-bg-primary {
-  fill: #000000;
-}
-.kp-logo .kp-logo-bg-accent {
-  fill: #858585;
-}
 .text-center .kp-logo {
   margin-left: 3rem;
+  width: 150px;
 }
 .navbar {
   background-color: white;
