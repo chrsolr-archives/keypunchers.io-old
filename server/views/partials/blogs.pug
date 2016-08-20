@@ -15,4 +15,7 @@ block content
                 .col-md-4.hidden-xs
                     h4 Categories
                     hr
-                    p Coming Soon...
+                    ul
+                        each tag in tags
+                            li
+                                a(href="/blogs?tag=" + tag) #{tag}

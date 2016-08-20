@@ -33,9 +33,13 @@ Blog.methods.toVM = function(){
 
 Blog.statics.getBlogs = function (query, limit) {
     const _this = this;
+    const _query = query;
 
     return new Promise((resolve, reject) => {
-        _this.find(query).sort({'createdAt': -1}).limit(limit || 10).exec((err, data) => {
+        var query = _this.find(_query);
+        query.sort({'createdAt': -1});
+        query.limit(limit || 10);
+        query.exec((err, data) => {
             
             if (err) return reject(err);
             
@@ -46,9 +50,12 @@ Blog.statics.getBlogs = function (query, limit) {
 
 Blog.statics.getBlog = function (query) {
     const _this = this;
+    const _query = query;
 
     return new Promise((resolve, reject) => {
-        _this.findOne(query).sort({'createdAt': -1}).exec((err, data) => {
+        var query = _this.findOne(_query);
+        query.sort({'createdAt': -1});
+        query.exec((err, data) => {
             
             if (err) return reject(err);
             

@@ -3,9 +3,13 @@
 const db = require('../repository/repository');
 
 exports.getBlogs = (req, res, next) => {
+    const tag = req.query.tag;
+    const tags = [
+        "Bootcamp"
+    ];
 
-    db.blogs.getBlogs().then((data) => {
-        return res.render('partials/blogs', { blogs: data });
+    db.blogs.getBlogs(tag).then((data) => {
+        return res.render('partials/blogs', { blogs: data, tags: tags });
     });
 };
 

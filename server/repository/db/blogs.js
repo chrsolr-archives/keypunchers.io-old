@@ -4,8 +4,13 @@ const model = require('../../models/Blog');
 
 const data = (() => {
 
-    function getBlogs(limit) {
-        return model.getBlogs({ isActive: true });
+    function getBlogs(tag) {
+        var query = { isActive: true };
+
+        if (tag) 
+            query.tags = { $in: [tag] };
+
+        return model.getBlogs(query);
     }
 
     function getBlog(permalink) {
