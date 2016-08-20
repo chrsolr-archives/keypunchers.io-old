@@ -8,8 +8,13 @@ const data = (() => {
         return model.getBlogs({ isActive: true });
     }
 
+    function getBlog(permalink) {
+        return model.getBlog({ isActive: true, permalink: permalink });
+    }
+
     return {
-        getBlogs
+        getBlogs,
+        getBlog
     }
 })();
 

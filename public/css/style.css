@@ -166,6 +166,9 @@
   margin-left: 1.6rem;
   width: 150px;
 }
+.row {
+  margin: 0;
+}
 p {
   margin-bottom: 1rem;
 }

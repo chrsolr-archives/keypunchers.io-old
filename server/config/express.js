@@ -16,6 +16,7 @@ app.use(session({ secret: config.server.SECRET, saveUninitialized: true, resave:
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(express.static('public'));
+app.locals.moment = require('moment');
 
 require('../routes/home.routes').mountRoutes(app);
 require('../routes/blog.routes').mountRoutes(app);

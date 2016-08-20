@@ -44,4 +44,17 @@ Blog.statics.getBlogs = function (query, limit) {
     });
 };
 
+Blog.statics.getBlog = function (query) {
+    const _this = this;
+
+    return new Promise((resolve, reject) => {
+        _this.findOne(query).sort({'createdAt': -1}).exec((err, data) => {
+            
+            if (err) return reject(err);
+            
+            return resolve(data.toVM());
+        });
+    });
+};
+
 module.exports = mongoose.model('blogs', Blog);

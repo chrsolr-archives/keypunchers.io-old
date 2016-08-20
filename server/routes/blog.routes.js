@@ -4,6 +4,7 @@ const blogController = require('../controllers/blog.controller');
 
 const mountRoutes = (app) => {
     app.get('/blogs', blogController.getBlogs);
+    app.get('/blogs/:permalink', blogController.getBlog);
 };
 
 exports.mountRoutes = mountRoutes;
