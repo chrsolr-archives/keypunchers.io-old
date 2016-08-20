@@ -3,10 +3,15 @@ extends ../layout.pug
 block content
     section#blogs-wrapper
         .container
-            each blog in blogs
-                .blog-wrapper
-                    img.img-respoinsive(src=blog.imageUrl, alt=blog.title width="100%")
-                    h2
-                        a(href="/blogs/" + blog.permalink) #{blog.title}
-                    p  #{blog.preview}
-                    a(href="/blogs/" + blog.permalink) read more...
+            .row
+                .col-sm-8
+                    each blog in blogs
+                        .blog-wrapper
+                            img.img-respoinsive(src=blog.imageUrl, alt=blog.title width="100%")
+                            h2
+                                a(href="/blogs/" + blog.permalink) #{blog.title}
+                            p  #{blog.preview}
+                            a(href="/blogs/" + blog.permalink) read more...
+                .col-md-4
+                    h4 Latest Articles
+                    hr
