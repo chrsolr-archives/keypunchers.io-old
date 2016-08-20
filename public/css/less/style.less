@@ -1,11 +1,16 @@
 @import 'common.less';
 @import 'navbar.less';
 @import 'index.less';
+@import 'about.less';
 
-body {
-    background-color: @color-bg-primary; 
-    font-family: @titillium-web;
-    font-weight: 300;
+html {
     font-size: @base-font-size;
-    padding-top: @navbar-height;
+
+    body {
+        background-color: @color-bg-primary; 
+        font-family: @titillium-web;
+        font-weight: 300;
+        font-size: @base-font-size;
+        padding-top: @navbar-height + 20px;
+    }
 }

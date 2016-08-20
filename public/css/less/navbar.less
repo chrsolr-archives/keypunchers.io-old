@@ -17,7 +17,7 @@
         border: none;
         margin-top: 25px;
 
-        &:hover, &:active {
+        &:hover, &:active, &:focus {
             background-color: transparent;
         }
     }
@@ -27,9 +27,52 @@
     }
 
     ul.nav.navbar-nav.navbar-right {
+        line-height: @navbar-height;
+        
         li {
+
             a {
-                line-height: 50px;                
+                line-height: 50px;
+                position: relative;
+
+                &:before, &:after {
+                    position: absolute;
+                    opacity: 0;
+                    color: @color-brand-primary;
+                    .transition(all .3s ease);
+                }
+
+                &:before {
+                    content: '[';
+                    left: 0;
+                }
+
+                &:after {
+                    content: ']';
+                    right: 0;
+                }  
+
+                &:hover {
+                    color: @color-brand-accent;
+
+                    &:before {
+                        opacity: 1;
+                        .transform(translateX(5px));
+                    }
+
+                    &:after {
+                        opacity: 1;
+                        .transform(translateX(-5px));
+                    }
+                }        
+            }
+
+            @media screen and (max-width: 767px) {
+                a {
+                    &:before, &:after {
+                        content: '';
+                    }
+                }
             }
         }
     }

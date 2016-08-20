@@ -1,8 +1,9 @@
 @import 'variables.less';
 
 section.banner {
-    background-color: @color-white;
-    padding: 5rem;
+    position: relative;
+    top: 50%;
+    transform: translate3d(0, 50%, 0);
 
     span {
         &:nth-child(1) {
@@ -16,5 +17,11 @@ section.banner {
         &:nth-child(3) {
             color: @color-brand-secondary;
         }
+    }
+
+    span.sub-title {
+        color: #999;
+        display: block;
+        text-align: center;
     }
 }

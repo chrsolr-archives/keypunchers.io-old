@@ -151,7 +151,7 @@
   background-color: #CC3434;
 }
 .text-center .kp-logo {
-  margin-left: 3rem;
+  margin-left: 1.6rem;
   width: 150px;
 }
 .navbar {
@@ -171,18 +171,60 @@
   margin-top: 25px;
 }
 .navbar .navbar-toggle:hover,
-.navbar .navbar-toggle:active {
+.navbar .navbar-toggle:active,
+.navbar .navbar-toggle:focus {
   background-color: transparent;
 }
 .navbar .navbar-collapse {
   border: none;
 }
+.navbar ul.nav.navbar-nav.navbar-right {
+  line-height: 80px;
+}
 .navbar ul.nav.navbar-nav.navbar-right li a {
   line-height: 50px;
+  position: relative;
+}
+.navbar ul.nav.navbar-nav.navbar-right li a:before,
+.navbar ul.nav.navbar-nav.navbar-right li a:after {
+  position: absolute;
+  opacity: 0;
+  color: #1F7A7A;
+  transition: all 0.3s ease;
+}
+.navbar ul.nav.navbar-nav.navbar-right li a:before {
+  content: '[';
+  left: 0;
+}
+.navbar ul.nav.navbar-nav.navbar-right li a:after {
+  content: ']';
+  right: 0;
+}
+.navbar ul.nav.navbar-nav.navbar-right li a:hover {
+  color: #CC3434;
+}
+.navbar ul.nav.navbar-nav.navbar-right li a:hover:before {
+  opacity: 1;
+  -webkit-transform: translateX(5px);
+  -ms-transform: translateX(5px);
+  transform: translateX(5px);
+}
+.navbar ul.nav.navbar-nav.navbar-right li a:hover:after {
+  opacity: 1;
+  -webkit-transform: translateX(-5px);
+  -ms-transform: translateX(-5px);
+  transform: translateX(-5px);
+}
+@media screen and (max-width: 767px) {
+  .navbar ul.nav.navbar-nav.navbar-right li a:before,
+  .navbar ul.nav.navbar-nav.navbar-right li a:after {
+    content: '';
+  }
 }
 section.banner {
-  background-color: white;
-  padding: 5rem;
+  position: relative;
+  top: 50%;
+  transform: translate3d(0, 50%, 0);
 }
 section.banner span:nth-child(1) {
   color: #1F7A7A;
@@ -193,10 +235,18 @@ section.banner span:nth-child(2) {
 section.banner span:nth-child(3) {
   color: #2AA32A;
 }
-body {
+section.banner span.sub-title {
+  color: #999;
+  display: block;
+  text-align: center;
+}
+html {
+  font-size: 16px;
+}
+html body {
   background-color: white;
   font-family: 'Titillium Web', sans-serif;
   font-weight: 300;
   font-size: 16px;
-  padding-top: 80px;
+  padding-top: 100px;
 }
