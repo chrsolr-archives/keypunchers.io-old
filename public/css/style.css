@@ -150,10 +150,6 @@
 .color-brand-bg-accent {
   background-color: #CC3434;
 }
-.text-center .kp-logo {
-  margin-left: 1.6rem;
-  width: 150px;
-}
 .animation-delay-500ms {
   -webkit-animation-delay: 500ms;
   animation-delay: 500ms;
@@ -165,6 +161,60 @@
 .animation-delay-1500ms {
   -webkit-animation-delay: 1500ms;
   animation-delay: 1500ms;
+}
+.text-center .kp-logo {
+  margin-left: 1.6rem;
+  width: 150px;
+}
+p {
+  margin-bottom: 1rem;
+}
+a.title {
+  position: relative;
+  font-size: 30px;
+  font-weight: 300;
+  margin: 1rem 0;
+  text-decoration: none;
+  color: #777;
+  display: inline-block;
+  border-bottom: 1px solid #ccc;
+  transition: border-bottom 0.3s ease;
+}
+a.title:before,
+a.title:after {
+  position: absolute;
+  opacity: 0;
+  color: #1F7A7A;
+  transition: all 0.3s ease;
+}
+a.title:before {
+  content: '[';
+  left: -1.5rem;
+}
+a.title:after {
+  content: ']';
+  right: -1.5rem;
+}
+a.title:hover {
+  color: #CC3434 !important;
+}
+a.title:hover:before {
+  opacity: 1;
+  -webkit-transform: translateX(0.5rem);
+  -ms-transform: translateX(0.5rem);
+  transform: translateX(0.5rem);
+}
+a.title:hover:after {
+  opacity: 1;
+  -webkit-transform: translateX(-0.5rem);
+  -ms-transform: translateX(-0.5rem);
+  transform: translateX(-0.5rem);
+}
+a.title:hover,
+a.title:active,
+a.title:focus {
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
 }
 .navbar {
   background-color: white;
@@ -288,7 +338,8 @@ section.banner span.sub-title {
   display: block;
   text-align: center;
 }
-section#blogs-wrapper {
+section#blogs-container .blog-wrapper {
+  padding-bottom: 20px;
   margin-bottom: 20px;
 }
 html {
