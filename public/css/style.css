@@ -181,11 +181,47 @@
 .navbar .navbar-toggle {
   border: none;
   margin-top: 25px;
+  position: relative;
 }
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:active,
 .navbar .navbar-toggle:focus {
   background-color: transparent;
+}
+.navbar .navbar-toggle span.icon-bar {
+  transition: all 300ms;
+  border-radius: 0;
+}
+.navbar .navbar-toggle span.icon-bar:nth-child(2) {
+  -webkit-transform: translateY(300%) rotate(45deg);
+  -ms-transform: translateY(300%) rotate(45deg);
+  transform: translateY(300%) rotate(45deg);
+}
+.navbar .navbar-toggle span.icon-bar:nth-child(3) {
+  opacity: 0;
+}
+.navbar .navbar-toggle span.icon-bar:nth-child(4) {
+  -webkit-transform: translateY(-300%) rotate(-45deg);
+  -ms-transform: translateY(-300%) rotate(-45deg);
+  transform: translateY(-300%) rotate(-45deg);
+}
+.navbar .navbar-toggle.collapsed span.icon-bar {
+  width: 22px;
+  height: 2px;
+  border-radius: 0;
+}
+.navbar .navbar-toggle.collapsed span.icon-bar:nth-child(2) {
+  -webkit-transform: translateY(0) rotate(0);
+  -ms-transform: translateY(0) rotate(0);
+  transform: translateY(0) rotate(0);
+}
+.navbar .navbar-toggle.collapsed span.icon-bar:nth-child(3) {
+  opacity: 1;
+}
+.navbar .navbar-toggle.collapsed span.icon-bar:nth-child(4) {
+  -webkit-transform: translateY(0) rotate(0);
+  -ms-transform: translateY(0) rotate(0);
+  transform: translateY(0) rotate(0);
 }
 .navbar .navbar-collapse {
   border: none;
