@@ -154,6 +154,18 @@
   margin-left: 1.6rem;
   width: 150px;
 }
+.animation-delay-500ms {
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
+}
+.animation-delay-1000ms {
+  -webkit-animation-delay: 1000ms;
+  animation-delay: 1000ms;
+}
+.animation-delay-1500ms {
+  -webkit-animation-delay: 1500ms;
+  animation-delay: 1500ms;
+}
 .navbar {
   background-color: white;
   margin-bottom: 0;
