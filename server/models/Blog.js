@@ -31,9 +31,16 @@ Blog.methods.toVM = function(){
     };
 };
 
-Blog.statics.get = function (query, limit, callback) {
-    this.find(query).sort({'createdAt': -1}).limit(limit || 10).exec(function(err, data) {
-        if (!err) return callback(data);
+Blog.statics.getBlogs = function (query, limit) {
+    const _this = this;
+
+    return new Promise((resolve, reject) => {
+        _this.find(query).sort({'createdAt': -1}).limit(limit || 10).exec((err, data) => {
+            
+            if (err) return reject(err);
+            
+            return resolve(data);
+        });
     });
 };
 

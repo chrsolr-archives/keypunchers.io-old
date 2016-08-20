@@ -288,6 +288,9 @@ section.banner span.sub-title {
   display: block;
   text-align: center;
 }
+section#blogs-wrapper {
+  margin-bottom: 20px;
+}
 html {
   font-size: 16px;
 }

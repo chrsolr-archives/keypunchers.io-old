@@ -1,0 +1,11 @@
+extends ../layout.pug
+
+block content
+    section#blogs-wrapper
+        .container
+            each blog in blogs
+                img.img-respoinsive(src=blog.imageUrl, alt=blog.title width="100%")
+                h2
+                    a(href=blog.permalink) #{blog.title}
+                p  #{blog.preview}
+                a(href=blog.permalink) read more...

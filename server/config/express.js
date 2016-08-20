@@ -18,5 +18,6 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 
 require('../routes/home.routes').mountRoutes(app);
+require('../routes/blog.routes').mountRoutes(app);
 
 module.exports = app;
