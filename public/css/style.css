@@ -132,6 +132,24 @@
 .rgba-complement-4 {
   color: #800202;
 }
+.color-brand-text-primary {
+  color: #1F7A7A;
+}
+.color-brand-text-secondary {
+  color: #2AA32A;
+}
+.color-brand-text-accent {
+  color: #CC3434;
+}
+.color-brand-bg-primary {
+  background-color: #1F7A7A;
+}
+.color-brand-bg-secondary {
+  background-color: #2AA32A;
+}
+.color-brand-bg-accent {
+  background-color: #CC3434;
+}
 .text-center .kp-logo {
   margin-left: 3rem;
   width: 150px;
