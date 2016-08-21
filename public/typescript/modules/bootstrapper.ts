@@ -8,7 +8,7 @@ export class Bootstrapper {
     }
 
     setPageTransition() {
-        $('a').on('click', function (e) {
+        $('a').on('click', function (e: any) {
             e.preventDefault();
 
             const url = $(this).attr('href');
