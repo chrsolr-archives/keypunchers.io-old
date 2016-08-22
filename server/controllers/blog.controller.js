@@ -5,7 +5,8 @@ const db = require('../repository/repository');
 exports.getBlogs = (req, res, next) => {
     const tag = req.query.tag;
     const tags = [
-        "Bootcamp"
+        "Bootcamp",
+        "Bootstrap"
     ];
 
     db.blogs.getBlogs(tag).then((data) => {
