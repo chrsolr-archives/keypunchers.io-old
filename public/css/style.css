@@ -351,6 +351,10 @@ footer.footer ul li {
 footer.footer ul li:last-child {
   margin-right: 0;
 }
+footer.footer ul li a:hover {
+  text-decoration: none;
+  color: #CC3434;
+}
 section.banner {
   min-height: 100vh;
 }
