@@ -228,7 +228,7 @@ a.title:focus {
   border: none;
   border-radius: 0;
   min-height: 80px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 .navbar .navbar-brand {
   line-height: 50px;
@@ -330,7 +330,7 @@ a.title:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #fafafa;
+  background-color: #fefefe;
   position: fixed;
   padding: 20px 0;
   z-index: -1;
@@ -405,5 +405,5 @@ html body .main-wrapper {
   padding-top: 100px;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
