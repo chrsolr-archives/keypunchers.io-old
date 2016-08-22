@@ -4,7 +4,7 @@ block content
     section.blog-container
         .container
             img.img-responsive(src=blog.imageUrl)
-            h2 #{blog.title}
+            h1 #{blog.title}
             p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
             div !{blog.content}
         
