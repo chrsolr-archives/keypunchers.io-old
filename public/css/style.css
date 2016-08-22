@@ -228,7 +228,7 @@ a.title:focus {
   border: none;
   border-radius: 0;
   min-height: 80px;
-  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 .navbar .navbar-brand {
   line-height: 50px;
@@ -325,33 +325,37 @@ a.title:focus {
     content: '';
   }
 }
-footer.footer {
+.footer {
   display: block;
-  background-color: #fafafa;
-  position: relative;
+  left: 0;
+  right: 0;
   bottom: 0;
+  background-color: #fafafa;
+  position: fixed;
   padding: 20px 0;
+  z-index: -1;
+  opacity: 0;
 }
-footer.footer img {
+.footer img {
   display: block;
 }
-footer.footer .brand-title {
+.footer .brand-title {
   display: block;
   text-align: center;
   margin-bottom: 1rem;
 }
-footer.footer ul {
+.footer ul {
   text-align: center;
   padding-left: 0;
 }
-footer.footer ul li {
+.footer ul li {
   display: inline-block;
   margin-right: 1rem;
 }
-footer.footer ul li:last-child {
+.footer ul li:last-child {
   margin-right: 0;
 }
-footer.footer ul li a:hover {
+.footer ul li a:hover {
   text-decoration: none;
   color: #CC3434;
 }
@@ -379,9 +383,12 @@ section.banner .content span.sub-title {
   display: block;
   text-align: center;
 }
-section#blogs-container .blog-wrapper {
+section.blogs-container .blog-wrapper {
   padding-bottom: 20px;
   margin-bottom: 20px;
+}
+section.blog-container {
+  padding-bottom: 20px;
 }
 html {
   font-size: 16px;
@@ -391,5 +398,12 @@ html body {
   font-family: 'Titillium Web', sans-serif;
   font-weight: 300;
   font-size: 16px;
+}
+html body .main-wrapper {
+  min-height: 100vh;
+  background-color: white;
   padding-top: 100px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }

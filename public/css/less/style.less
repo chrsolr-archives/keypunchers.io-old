@@ -13,6 +13,14 @@ html {
         font-family: @titillium-web;
         font-weight: 300;
         font-size: @base-font-size;
-        padding-top: @navbar-height + 20px;
+
+        .main-wrapper {
+            min-height: 100vh;
+            background-color: @color-bg-primary; 
+            padding-top: @navbar-height + 20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
     }
 }

@@ -1,16 +1,16 @@
 extends ../layout.pug
 
 block content
-    section#blogs-container
+    section.blogs-container
         .container
             .row
                 .col-sm-8
                     each blog in blogs
                         .blog-wrapper
                             img.img-respoinsive(src=blog.imageUrl, alt=blog.title width="100%")
-                            a.title(href="/blogs/" + blog.permalink) #{blog.title}
+                            a.transition.title(href="/blogs/" + blog.permalink) #{blog.title}
                             p  #{blog.preview}
-                            a(href="/blogs/" + blog.permalink) read more...
+                            a.transition(href="/blogs/" + blog.permalink) read more...
 
                 .col-md-4.hidden-xs
                     h4 Categories
