@@ -1,0 +1,9 @@
+@import "_variables";
+
+@mixin bottom-shadow() {
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+}
+
+@mixin animation-delay($args) { 
+    animation-delay: $args; 
+}

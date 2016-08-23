@@ -1,0 +1,38 @@
+@import "./partials/_mixins";
+
+section.banner {
+    min-height: spacing(20, vh);
+
+    .content {
+        position: relative;
+        top: 50%;
+        transform: translate3d(0, 50%, 0);
+
+        .text-center {
+            .kp-logo {
+                margin-left: 1.6rem;
+                width: spacing(30);
+            }
+        }
+        
+        span {
+            &:nth-child(1) {
+                color: $color-brand-primary;
+            }
+
+            &:nth-child(2) {
+                color: $color-brand-accent;
+            }
+
+            &:nth-child(3) {
+                color: $color-brand-secondary;
+            }
+        }
+
+        span.sub-title {
+            color: #999;
+            display: block;
+            text-align: center;
+        }
+    }
+}

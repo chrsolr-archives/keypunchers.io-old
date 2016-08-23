@@ -1,0 +1,12 @@
+@import "./partials/_functions";
+
+section.blogs-container {
+    .blog-wrapper {
+        padding-bottom: spacing(4); 
+        margin-bottom: spacing(4);
+    }
+}
+
+section.blog-container {
+    padding-bottom: spacing(4); 
+}

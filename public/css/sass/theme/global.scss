@@ -1,0 +1,76 @@
+@import "./partials/_mixins";
+
+.color-brand-text-primary { color: $color-brand-primary; }
+.color-brand-text-secondary { color: $color-brand-secondary; }
+.color-brand-text-accent { color: $color-brand-accent; }
+.color-brand-bg-primary { background-color: $color-brand-primary; }
+.color-brand-bg-secondary { background-color: $color-brand-secondary; }
+.color-brand-bg-accent { background-color: $color-brand-accent; }
+
+.animation-delay-500ms { @include animation-delay(500ms); }
+.animation-delay-1000ms { @include animation-delay(1000ms); }
+.animation-delay-1500ms { @include animation-delay(1500ms); }
+
+.row { 
+    margin: 0;
+}
+
+p, h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+}
+
+pre {
+    background-color: $color-off-white;
+    padding: spacing(4);
+    margin-bottom: 1rem; 
+    border: none;
+    border-radius: 0;
+}
+
+a.title {
+    position: relative;
+    font-size: 30px;
+    font-weight: 300;
+    margin: 1rem 0;
+    text-decoration: none;
+    color: $color-gray;
+    display: inline-block;
+    border-bottom: 1px solid $color-light-gray;
+    transition: border-bottom .3s ease;
+
+    &:before, &:after {
+        position: absolute;
+        opacity: 0;
+        color: $color-brand-primary;
+        transition: all .3s ease;
+    }
+
+    &:before {
+        content: '[';
+        left: -1.5rem;
+    }
+
+    &:after {
+        content: ']';
+        right: -1.5rem;
+    }  
+
+    &:hover {
+        color: $color-brand-accent !important;
+
+        &:before {
+            opacity: 1;
+            transform: translateX(0.5rem);
+        }
+
+        &:after {
+            opacity: 1;
+            transform: translateX(-0.5rem);
+        }
+    } 
+
+    &:hover, &:active, &:focus {
+        text-decoration: none; 
+        border-bottom: 1px dotted transparent; 
+    }
+}
