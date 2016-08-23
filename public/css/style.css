@@ -179,6 +179,8 @@ pre {
   background-color: #f1f1f1;
   padding: 20px;
   margin-bottom: 1rem;
+  border: none;
+  border-radius: 0;
 }
 a.title {
   position: relative;
@@ -339,7 +341,7 @@ a.title:focus {
   position: fixed;
   padding: 20px 0;
   z-index: -1;
-  opacity: 0;
+  opacity: 1;
 }
 .footer img {
   display: block;

@@ -4,14 +4,12 @@ define(["require", "exports", 'jquery'], function (require, exports, $) {
         function Bootstrapper() {
         }
         Bootstrapper.prototype.initialize = function () {
-            this.setPageTransition();
             this.setFooterHeight();
         };
         Bootstrapper.prototype.setPageTransition = function () {
             $('a.transition').on('click', function (e) {
                 e.preventDefault();
                 var url = $(this).attr('href');
-                $('.footer').css({ opacity: 0 });
                 $('.main-wrapper').fadeOut('fast', function () {
                     document.location.href = url;
                 });

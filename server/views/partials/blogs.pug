@@ -8,9 +8,9 @@ block content
                     each blog in blogs
                         .blog-wrapper
                             img.img-respoinsive(src=blog.imageUrl, alt=blog.title width="100%")
-                            a.transition.title(href="/blogs/" + blog.permalink) #{blog.title}
+                            a.title(href="/blogs/" + blog.permalink) #{blog.title}
                             p  #{blog.preview}
-                            a.transition(href="/blogs/" + blog.permalink) read more...
+                            a(href="/blogs/" + blog.permalink) read more...
 
                 .col-sm-4.hidden-xs
                     h4 Categories
