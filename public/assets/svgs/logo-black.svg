@@ -1,7 +1,7 @@
 <svg id="kp-logo" data-name="kp-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 314.39 354.11" class="kp-logo">
   <style>
-    .kp-logo-bg-primary { fill: #121212; }
-    .kp-logo-bg-accent { fill: #333333; }
+    .kp-logo-bg-primary { fill: #333; }
+    .kp-logo-bg-accent { fill: #777; }
   </style>
   <title>KeyPunchers</title>
   <polygon points="23.96 225.03 23.57 224.65 54.95 193.27 54.95 54.39 0.56 0 0.56 354.11 54.95 354.11 54.95 256.79 23.57 225.41 23.96 225.03" class="kp-logo-bg-primary"></polygon>

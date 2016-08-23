@@ -1,18 +1,20 @@
-@import "./partials/_mixins";
-
-.color-brand-text-primary { color: $color-brand-primary; }
-.color-brand-text-secondary { color: $color-brand-secondary; }
-.color-brand-text-accent { color: $color-brand-accent; }
-.color-brand-bg-primary { background-color: $color-brand-primary; }
-.color-brand-bg-secondary { background-color: $color-brand-secondary; }
-.color-brand-bg-accent { background-color: $color-brand-accent; }
-
-.animation-delay-500ms { @include animation-delay(500ms); }
-.animation-delay-1000ms { @include animation-delay(1000ms); }
-.animation-delay-1500ms { @include animation-delay(1500ms); }
+@import "./partials/_utils";
 
 .row { 
     margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, a, li, ol, i,  {
+    color: $color-font-base;
+}
+
+strong {
+    font-weight: $font-weight-bold;
+}
+
+a:hover {
+    color: $color-brand-secondary;
+    text-decoration: none;
 }
 
 p, h1, h2, h3, h4 {
@@ -56,7 +58,7 @@ a.title {
     }  
 
     &:hover {
-        color: $color-brand-accent !important;
+        color: $color-brand-secondary !important;
 
         &:before {
             opacity: 1;

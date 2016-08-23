@@ -1,18 +1,17 @@
-@import "./partials/_mixins";
-@import "./partials/_functions";
+@import "./partials/_utils";
 
 html {
-    font-size: $base-font-size;
+    font-size: $font-size-base;
 
     body {
         background-color: $color-bg-primary; 
         font-family: $titillium-web;
-        font-weight: 300;
-        font-size: $base-font-size;
+        font-weight: $font-weight-regular;
+        font-size: $font-size-base;
 
         .main-wrapper {
-            min-height: 100vh;
-            background-color: $color-bg-primary; 
+            min-height: spacing(20, vh);
+            background-color: $color-bg-primary;
             padding-top: $navbar-height + 20px;
             position: relative;
             z-index: 1;

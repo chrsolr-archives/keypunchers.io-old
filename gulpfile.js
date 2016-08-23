@@ -4,13 +4,6 @@ const config = require('./server/config/config');
 const gulp = require('gulp');
 const glp = require('gulp-load-plugins')({ lazy: true });
 
-gulp.task('less-compile', () => {
-    return gulp
-        .src(config.paths.CSS + 'less/style.less')
-        .pipe(glp.less())
-        .pipe(gulp.dest(config.paths.CSS));
-});
-
 gulp.task('sass-compile', () => {
     return gulp.src(config.paths.CSS + 'sass/style.scss')
         .pipe(glp.sass().on('error', glp.sass.logError))

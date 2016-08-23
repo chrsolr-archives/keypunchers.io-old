@@ -1,12 +1,12 @@
-@import "./partials/_functions";
+@import "./partials/_utils";
 
-section.blogs-container {
+.blogs-container {
     .blog-wrapper {
         padding-bottom: spacing(4); 
         margin-bottom: spacing(4);
     }
 }
 
-section.blog-container {
+.blog-container {
     padding-bottom: spacing(4); 
 }

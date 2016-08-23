@@ -1,4 +1,4 @@
-@import "./partials/_mixins";
+@import "./partials/_utils";
 
 section.banner {
     min-height: spacing(20, vh);
@@ -21,16 +21,16 @@ section.banner {
             }
 
             &:nth-child(2) {
-                color: $color-brand-accent;
+                color: $color-brand-secondary;
             }
 
             &:nth-child(3) {
-                color: $color-brand-secondary;
+                color: $color-brand-accent;
             }
         }
 
         span.sub-title {
-            color: #999;
+            color: $color-gray;
             display: block;
             text-align: center;
         }
