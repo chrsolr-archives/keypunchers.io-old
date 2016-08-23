@@ -20,6 +20,7 @@
     "animate.css": "^3.5.2",
     "font-awesome": "^4.6.3",
     "bootstrap": "^3.3.7",
-    "requirejs": "^2.2.0"
+    "requirejs": "^2.2.0",
+    "prism": "prismjs#^1.5.1"
   }
 }

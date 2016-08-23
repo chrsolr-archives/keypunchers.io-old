@@ -13,6 +13,7 @@
         "declaration": true
     },
     "files": ["public/typescript/modules/bootstrapper.ts",
+        "public/typescript/scripts/blog.ts",
         "public/typescript/scripts/index.ts"
     ]
 }

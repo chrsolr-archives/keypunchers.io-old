@@ -3,7 +3,8 @@ requirejs.config({
     paths: {
         jquery: 'libs/jquery/dist/jquery.min',
         bootstrap: 'libs/bootstrap/dist/js/bootstrap.min',
-        Bootstrapper: 'js/modules/bootstrapper'
+        Bootstrapper: 'js/modules/bootstrapper',
+        prism: 'libs/prism/prism'
     },
     shim: {
         bootstrap: {

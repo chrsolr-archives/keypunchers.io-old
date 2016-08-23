@@ -8,3 +8,5 @@ block content
             p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
             div !{blog.content}
         
+    script.
+        requirejs(['/js/scripts/blog.js']);
