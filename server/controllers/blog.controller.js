@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('../repository/repository');
+const db = require('../modules/data-access/db');
 
 exports.getBlogs = (req, res) => {
     const tag = req.query.tag;

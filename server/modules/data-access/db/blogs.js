@@ -1,6 +1,6 @@
 'use strict';
 
-const model = require('../../models/Blog');
+const model = require('../models/Blog');
 
 const data = (() => {
 
