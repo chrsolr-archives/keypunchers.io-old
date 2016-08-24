@@ -10,7 +10,12 @@ exports.getBlogs = (req, res) => {
     ];
 
     db.blogs.getBlogs(tag).then((data) => {
-        return res.render('partials/blogs', { blogs: data, tags: tags });
+
+        db.tags.getTags().then(r => {
+            console.log(r);
+            return res.render('partials/blogs', { blogs: data, tags: tags });
+        });
+
     });
 };
 

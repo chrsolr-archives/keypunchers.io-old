@@ -21,7 +21,7 @@ const data = (() => {
     return {
         getBlogs,
         getBlogByPermalink
-    }
+    };
 })();
 
 module.exports = data;
