@@ -13,9 +13,9 @@ block content
                             a(href="/blogs/" + blog.permalink) read more...
 
                 .col-sm-4.hidden-xs
-                    h4 Categories
+                    h4 Tags
                     hr
                     ul
                         each tag in tags
                             li
-                                a(href="/blogs?tag=" + tag) #{tag}
+                                a(href="/blogs?tag=" + tag.name) #{tag.name}
