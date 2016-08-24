@@ -5,7 +5,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
-const router = express.Router();
 const path = require('path');
 
 process.env.NODE_ENV = config.server.ENV;

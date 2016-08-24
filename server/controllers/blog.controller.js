@@ -2,7 +2,7 @@
 
 const db = require('../repository/repository');
 
-exports.getBlogs = (req, res, next) => {
+exports.getBlogs = (req, res) => {
     const tag = req.query.tag;
     const tags = [
         "Bootcamp",
@@ -14,10 +14,10 @@ exports.getBlogs = (req, res, next) => {
     });
 };
 
-exports.getBlog = (req, res, next) => {
+exports.getBlog = (req, res) => {
     const permalink = req.params.permalink;
 
-    db.blogs.getBlog(permalink).then((data) => {
+    db.blogs.getBlogByPermalink(permalink).then((data) => {
         return res.render('partials/blog', { blog: data });
     });
 };

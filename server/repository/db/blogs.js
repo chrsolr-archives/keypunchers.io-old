@@ -7,19 +7,20 @@ const data = (() => {
     function getBlogs(tag) {
         var query = { isActive: true };
 
-        if (tag) 
+        if (tag) {
             query.tags = { $in: [tag] };
+        }
 
         return model.getBlogs(query);
     }
 
-    function getBlog(permalink) {
-        return model.getBlog({ isActive: true, permalink: permalink });
+    function getBlogByPermalink(permalink) {
+        return model.getBlogByPermalink({ isActive: true, permalink: permalink });
     }
 
     return {
         getBlogs,
-        getBlog
+        getBlogByPermalink
     }
 })();
 
