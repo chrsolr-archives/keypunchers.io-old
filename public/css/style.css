@@ -176,6 +176,40 @@ a.title {
     text-decoration: none;
     border-bottom: 1px dotted transparent; }
 
+a.bracket-animation {
+  position: relative;
+  text-decoration: none;
+  color: #777777;
+  display: inline-block;
+  border-bottom: 1px solid #cccccc;
+  transition: border-bottom .3s ease; }
+  a.bracket-animation:before, a.bracket-animation:after {
+    position: absolute;
+    opacity: 0;
+    color: #1f7a7a;
+    transition: all .3s ease; }
+  a.bracket-animation:before {
+    content: '[';
+    left: -1.5rem; }
+  a.bracket-animation:after {
+    content: ']';
+    right: -1.5rem; }
+  a.bracket-animation:hover {
+    color: #cc3434 !important; }
+    a.bracket-animation:hover:before {
+      opacity: 1;
+      -webkit-transform: translateX(1rem);
+      -ms-transform: translateX(1rem);
+      transform: translateX(1rem); }
+    a.bracket-animation:hover:after {
+      opacity: 1;
+      -webkit-transform: translateX(-1rem);
+      -ms-transform: translateX(-1rem);
+      transform: translateX(-1rem); }
+  a.bracket-animation:hover, a.bracket-animation:active, a.bracket-animation:focus {
+    text-decoration: none;
+    border-bottom: 1px dotted transparent; }
+
 section.banner {
   min-height: 100vh; }
   section.banner .content {
@@ -203,3 +237,11 @@ section.banner {
 
 .blog-container {
   padding-bottom: 20px; }
+  .blog-container .tags {
+    text-align: center;
+    padding: 0; }
+    .blog-container .tags li {
+      display: inline-block;
+      margin-right: 15px; }
+      .blog-container .tags li:last-child {
+        margin-right: 0; }

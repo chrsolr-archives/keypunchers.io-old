@@ -4,8 +4,8 @@ const db = require('../modules/data-access/db');
 
 exports.getBlogs = (req, res) => {
     const tag = req.query.tag;
-    const tags = db.tags.getTags();
-    const blogs = db.blogs.getBlogs(tag);
+    const tags = db.tags.getAll();
+    const blogs = (tag) ? db.blogs.getByTag(tag) : db.blogs.getAll();
 
     Promise.all([blogs, tags])
         .then(values => {
@@ -13,15 +13,15 @@ exports.getBlogs = (req, res) => {
                 blogs: values[0],
                 tags: values[1]
             };
-            console.log(data.tags);
+
             return res.render('partials/blogs', data);
         });
 };
 
-exports.getBlog = (req, res) => {
+exports.getBlogByPermalink = (req, res) => {
     const permalink = req.params.permalink;
 
-    db.blogs.getBlogByPermalink(permalink).then((data) => {
+    db.blogs.getByPermalink(permalink).then((data) => {
         return res.render('partials/blog', { blog: data });
     });
 };

@@ -1,5 +1,4 @@
 extends ../layout.pug
-
 block content
     section.blog-container
         .container
@@ -7,6 +6,12 @@ block content
             h1 #{blog.title}
             p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
             div !{blog.content}
+            hr
+            h3.text-center Tags
+            ul.tags
+                each tag in blog.tags
+                    li
+                        a.bracket-animation(href='/blogs?tag=' + tag.name) #{tag.name}
         
     script.
         requirejs(['/js/scripts/blog.js']);

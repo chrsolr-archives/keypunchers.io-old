@@ -2,26 +2,55 @@
 
 const model = require('../models/Blog');
 
-const data = (() => {
+class BlogContext {
+    constructor() { }
 
-    function getBlogs(tag) {
-        var query = { isActive: true };
+    getAll(query) {
+        query = query || {};
 
-        if (tag) {
-            query.tags = { $in: [tag] };
-        }
+        return new Promise((resolve, reject) => {
+            var _query = model.find(query);
+            _query.sort({ 'createdAt': -1 });
+            _query.limit(query.limit || 10);
+            _query.exec((err, data) => {
+                if (err) { return reject(err); }
 
-        return model.getBlogs(query);
+                return resolve(data);
+            });
+        });
     }
 
-    function getBlogByPermalink(permalink) {
-        return model.getBlogByPermalink({ isActive: true, permalink: permalink });
+    getByTag(tag) {
+        return new Promise((resolve, reject) => {
+            var query = model.find();
+            query.populate('tags', '-_id');
+            query.sort({ 'createdAt': -1 });
+            query.lean();
+            query.exec((err, data) => {
+                if (err) { return reject(err); }
+
+                data = data.filter((obj) => {
+                    return obj.tags.find(t => (t.name === tag));
+                });
+
+                return resolve(data || []);
+            });
+        });
     }
 
-    return {
-        getBlogs,
-        getBlogByPermalink
-    };
-})();
+    getByPermalink(permalink) {
+        return new Promise((resolve, reject) => {
+            var query = model.findOne();
+            query.where('permalink').equals(permalink);
+            query.populate('tags', '-_id');
+            query.sort({ 'createdAt': -1 });
+            query.exec((err, data) => {
+                if (err) { return reject(err); }
 
-module.exports = data;
+                return resolve(data);
+            });
+        });
+    }
+}
+
+module.exports = new BlogContext();
