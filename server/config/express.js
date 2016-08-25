@@ -20,6 +20,11 @@ app.locals.moment = require('moment');
 
 passport(app);
 
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    return next();
+});
+
 require('../routes/home').mountRoutes(app);
 require('../routes/blog').mountRoutes(app);
 require('../routes/auth').mountRoutes(app);

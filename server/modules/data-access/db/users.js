@@ -5,26 +5,32 @@ const model = require('../models/User');
 class UserContext {
     constructor() { }
 
-    add(profile) {
+    addGoogleProfile(profile, accessToken) {
 
         return new Promise((resolve, reject) => {
-            
-            const _user = {
-                displayName: profile.displayName,
-                firstName: profile.name.givenName,
-                lastName: profile.name.familyName,
-                email: profile.emails.find((value) => {
-                    return value.type === 'account';
-                }).value,
-                imageUrl: profile.photos[0].value
-            };
 
-            var User = new model(_user);
-            model.find({email: _user.email }, (err, users) => {
-                if (users.length) {
-                    return resolve(_user);
+            const email = profile.emails.find(value => value.type === 'account').value;
+
+            model.findOne({ email: email }, (err, user) => {
+                if (user && user.google.id) {
+                    return resolve(user);
                 }
 
+                const user_schema = {
+                    displayName: profile.displayName,
+                    email: profile.emails.find((value) => {
+                        return value.type === 'account';
+                    }).value,
+                    image: profile.photos[0].value,
+                    firstName: profile.name.givenName,
+                    lastName: profile.name.familyName,
+                    google: {
+                        id: profile.id,
+                        token: accessToken
+                    }
+                };
+
+                var User = new model(user_schema);
                 User.save((err, user) => {
                     if (err) {
                         return reject(err);
@@ -32,6 +38,18 @@ class UserContext {
 
                     return resolve(user);
                 });
+            });
+        });
+    }
+
+    getById(id) {
+        return new Promise((resolve, reject) => {
+            model.findOne({ _id: id }).exec((err, user) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                return resolve(user);
             });
         });
     }

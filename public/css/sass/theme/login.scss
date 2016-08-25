@@ -1,0 +1,62 @@
+@import "./partials/_utils";
+
+#login-wrapper {
+    position: relative;
+
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, 50%, 0);
+
+        .kp-logo {
+            width: 100px;
+        }
+
+        span {
+            &:nth-child(1) {
+                color: $color-brand-primary;
+            }
+
+            &:nth-child(2) {
+                color: $color-brand-secondary;
+            }
+
+            &:nth-child(3) {
+                color: $color-brand-accent;
+            }
+        }
+
+        span.sub-title {
+            color: $color-gray;
+            display: block;
+            text-align: center;
+        }
+
+        ul {
+            text-align: center;
+            padding: 0;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin-right: spacing(3);
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                a {
+                    i {
+                        transition: color 300ms ease;
+                        
+                        &:hover, &:focus, &:active {
+                            text-decoration: none;
+                            color: $color-brand-secondary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

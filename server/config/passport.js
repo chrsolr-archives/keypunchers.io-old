@@ -18,14 +18,15 @@ module.exports = (app) => {
             return done('Google authentication failed', profile); 
         }
 
-        db.users.add(profile).then((res) => done(null, res), (err) => done(err, null));
+        db.users.addGoogleProfile(profile, accessToken)
+            .then((res) => done(null, res), (err) => done(err, null));
     }));
 
     passport.serializeUser((user, done) => {
-        done(null, user);
+        done(null, user.id);
     });
 
-    passport.deserializeUser((user, done) => {
-        done(null, user);
+    passport.deserializeUser((userId, done) => {
+        db.users.getById(userId).then(res => done(null, res));
     });
 };

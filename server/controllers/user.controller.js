@@ -1,11 +1,14 @@
 'use strict';
 
-exports.getProfile = (req, res) => {
-    const user = req.user;
+exports.profile = (req, res) => {
+    return res.render('partials/profile');
+};
 
-    if (!user) {
-        return res.redirect('/');
-    }
-    
-    return res.render('partials/profile', {user});
+exports.login = (req, res) => {
+    return res.render('partials/login');
+};
+
+exports.logout = (req, res) => {
+    req.logout();
+    return res.redirect('/');
 };
