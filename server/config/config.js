@@ -13,6 +13,13 @@ const config = (() => {
         SECRET: process.env.SECRET || 'K3yPunch3r5'
     };
 
+    const apis = {
+        google: {
+            clientID: process.env.GOOGLE_CLIENT_ID || '720674278160-lq7ncnm0uqfegd5eft6v11qltrjov1oh.apps.googleusercontent.com',
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'bzQg41JGPAPbGREz63du2feu'
+        }
+    };
+
     const paths = {
         ROOT: '.',
         CLIENT: CLIENT,
@@ -65,8 +72,9 @@ const config = (() => {
         db,
         server,
         paths,
-        gulp
-    }
+        gulp,
+        apis
+    };
 
 })();
 

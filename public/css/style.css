@@ -84,6 +84,10 @@ html {
       transform: translateY(0) rotate(0); }
   .navbar .navbar-collapse {
     border: none; }
+  .navbar .dropdown.open, .navbar .dropdown.open > a, .navbar .dropdown-menu > li > a {
+    background-color: transparent; }
+    .navbar .dropdown.open:hover, .navbar .dropdown.open:active, .navbar .dropdown.open:focus, .navbar .dropdown.open > a:hover, .navbar .dropdown.open > a:active, .navbar .dropdown.open > a:focus, .navbar .dropdown-menu > li > a:hover, .navbar .dropdown-menu > li > a:active, .navbar .dropdown-menu > li > a:focus {
+      background-color: transparent; }
   .navbar ul.nav.navbar-nav.navbar-right {
     line-height: 80px; }
     .navbar ul.nav.navbar-nav.navbar-right li a {

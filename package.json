@@ -18,6 +18,8 @@
     "jsonwebtoken": "^7.1.9",
     "moment": "^2.14.1",
     "mongoose": "^4.5.9",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "^1.0.0",
     "password-hash": "^1.2.2",
     "pug": "^2.0.0-alpha6",
     "sendgrid": "^4.0.1"

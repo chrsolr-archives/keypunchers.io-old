@@ -4,6 +4,7 @@ const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const passport = require('./passport');
 const app = express();
 const path = require('path');
 
@@ -17,7 +18,11 @@ app.set('view engine', 'pug');
 app.use(express.static('public'));
 app.locals.moment = require('moment');
 
-require('../routes/home.routes').mountRoutes(app);
-require('../routes/blog.routes').mountRoutes(app);
+passport(app);
+
+require('../routes/home').mountRoutes(app);
+require('../routes/blog').mountRoutes(app);
+require('../routes/auth').mountRoutes(app);
+require('../routes/user').mountRoutes(app);
 
 module.exports = app;

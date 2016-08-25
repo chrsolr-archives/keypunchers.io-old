@@ -14,3 +14,14 @@ nav.navbar.navbar-default.navbar-fixed-top
                     a(href="/", data-toggle="collapse", data-target=".navbar-collapse.in") Home
                 li
                     a(href="/blogs", data-toggle="collapse", data-target=".navbar-collapse.in") Blog
+                //- if user
+                //-     li
+                //-         a(href="/profile", data-toggle="collapse", data-target=".navbar-collapse.in") Profile
+                //- if !user
+                //-     li.dropdown
+                //-         a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Login
+                //-             span.caret
+                //-         ul.dropdown-menu
+                //-             li
+                //-                 a(href="/auth/google") 
+                //-                     i.fa.fa-google &nbsp; Google

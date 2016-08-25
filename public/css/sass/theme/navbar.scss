@@ -62,6 +62,14 @@
         border: none;
     }
 
+    .dropdown.open, .dropdown.open > a, .dropdown-menu > li > a {
+        background-color: transparent;
+
+        &:hover, &:active, &:focus {
+            background-color: transparent;
+        }
+    }
+
     ul.nav.navbar-nav.navbar-right {
         line-height: $navbar-height;
         
