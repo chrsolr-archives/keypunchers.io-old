@@ -11,6 +11,7 @@ const UserModel = (() => {
         updatedAt: { type: Date, default: Date.now },
         displayName: { type: String, required: true, trim: true },
         email: { type: String, required: true, index: { unique: true }, trim: true },
+        tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'blogs' }],
         firstName: { type: String },
         lastName: { type: String },
         google: { type: Object },
