@@ -30,7 +30,7 @@ module.exports = (app) => {
         passReqToCallback: true
     }, function (req, token, tokenSecret, profile, done) {
         if (!profile) { 
-            return done('Google authentication failed', profile); 
+            return done('Twitter authentication failed', profile); 
         }
 
         db.users.addTwitterProfile(profile, token, tokenSecret)
