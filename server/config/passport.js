@@ -4,43 +4,60 @@ const config = require('./config');
 const passport = require('passport');
 const db = require('../modules/data-access/db');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const TwitterStrategy = require('passport-twitter').Strategy;
+
+function stragetyHandler(profile, done) {
+    if (!profile) {
+        return done(new Error(`Information returned by ${profile.provider} was empty.`), profile);
+    }
+
+    db.users.login(profile)
+        .then((res) => done(null, res), (err) => done(new Error(err), null));
+}
 
 module.exports = (app) => {
+    /**
+     * @desc Set passport with expresssjs
+     */
     app.use(passport.initialize());
     app.use(passport.session());
 
+    /**
+     * @desc Setup Google Passport Strategy
+     */
     passport.use(new GoogleStrategy({
         clientID: config.apis.google.clientID,
         clientSecret: config.apis.google.clientSecret,
-        callbackURL: '/auth/google/callback'
+        callbackURL: config.apis.google.callbackURL
     }, function (accessToken, refreshToken, profile, done) {
-        if (!profile) { 
-            return done('Google authentication failed', profile); 
-        }
 
-        db.users.addGoogleProfile(profile, accessToken)
-            .then((res) => done(null, res), (err) => done(err, null));
+        const email = profile.emails.find(value => value.type === 'account').value;
+
+        const user_schema = {
+            displayName: profile.displayName,
+            email: email,
+            email_canonical: email.toUpperCase(),
+            image: profile.photos[0].value,
+            name: `${profile.name.givenName} ${profile.name.familyName}`,
+            provider: 'google',
+            google: {
+                id: profile.id,
+                token: accessToken
+            }
+        };
+
+        stragetyHandler(user_schema, done);
     }));
 
-    passport.use(new TwitterStrategy({
-        consumerKey: config.apis.twitter.consumerKey,
-        consumerSecret: config.apis.twitter.consumerSecret,
-        callbackURL: '/auth/twitter/callback',
-        passReqToCallback: true
-    }, function (req, token, tokenSecret, profile, done) {
-        if (!profile) { 
-            return done('Twitter authentication failed', profile); 
-        }
-
-        db.users.addTwitterProfile(profile, token, tokenSecret)
-            .then((res) => done(null, res), (err) => done(err, null));
-    }));
-
+    /**
+     * @desc Serialize User
+     */
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });
 
+    /**
+     * @desc Deserialize User
+     */
     passport.deserializeUser((userId, done) => {
         db.users.getById(userId).then(res => done(null, res));
     });

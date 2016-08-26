@@ -1,3 +1,5 @@
+/* globals requirejs  */
+
 requirejs.config({
     baseUrl: '/',
     paths: {
@@ -14,5 +16,6 @@ requirejs.config({
 });
 
 requirejs(['Bootstrapper', 'jquery', 'bootstrap'], function (Bootstrapper) {
+    'use strict';
     new Bootstrapper.Bootstrapper().initialize();
 });

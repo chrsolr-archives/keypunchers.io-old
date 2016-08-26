@@ -6,9 +6,9 @@ const UserModel = (() => {
 
     const schema = {
         image: { type: String, trim: true },
-        email: { type: String, index: { unique: true }, trim: true },
+        email: { type: String, required: true, index: { unique: true }, trim: true },
+        email_canonical: { type: String, uppercase: true, required: true, trim: true, index: { unique: true }},
         name: { type: String, trim: true, required: true},
-        name_canonical: { type: String, uppercase: true, required: true, trim: true, index: { unique: true }},
         displayName: { type: String, required: true, trim: true },
 
         isAnAdmin: { type: Boolean, default: false },
@@ -25,7 +25,7 @@ const UserModel = (() => {
 
     UserSchema.pre('save', function (next) {
         
-        this.name_canonical = this.name;
+        this.email_canonical = this.email;
 
         next();
     });
