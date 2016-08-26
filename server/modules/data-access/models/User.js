@@ -10,7 +10,6 @@ const UserModel = (() => {
         name: { type: String, trim: true, required: true},
         name_canonical: { type: String, uppercase: true, required: true, trim: true, index: { unique: true }},
         displayName: { type: String, required: true, trim: true },
-        tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'blogs' }],
 
         isAnAdmin: { type: Boolean, default: false },
         createdAt: { type: Date, default: Date.now },
