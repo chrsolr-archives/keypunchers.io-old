@@ -4,7 +4,8 @@ block content
         .container
             img.img-responsive(src=blog.imageUrl)
             h1 #{blog.title}
-            p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
+            p By #{blog.author.name}, Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
+            hr
             div !{blog.content}
             hr
             h3.text-center Tags

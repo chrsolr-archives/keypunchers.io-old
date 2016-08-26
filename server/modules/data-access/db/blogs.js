@@ -43,6 +43,7 @@ class BlogContext {
             var query = model.findOne();
             query.where('permalink').equals(permalink);
             query.populate('tags', '-_id');
+            query.populate('author', 'name -_id');
             query.sort({ 'createdAt': -1 });
             query.exec((err, data) => {
                 if (err) { return reject(err); }
