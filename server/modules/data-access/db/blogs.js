@@ -7,7 +7,7 @@ const model = require('../models/Blog');
 
 /**
  * @class BlogContext
- * @description Class for accessing blogs in the database
+ * @desc Class for accessing blogs in the database
  */
 class BlogContext {
     /**
@@ -17,7 +17,7 @@ class BlogContext {
 
     /**
      * @function getAll
-     * @description Get all blogs from the database
+     * @desc Get all blogs from the database
      * 
      * @param {object} query MongoDB Query Object
      * @returns Returns all blogs from the database
@@ -39,7 +39,7 @@ class BlogContext {
 
     /**
      * @function getByTag
-     * @description Get all blogs by the tag name from the database
+     * @desc Get all blogs by the tag name from the database
      * 
      * @param {string} tag Tag name to search for
      * @returns Returns all found blogs from the database
@@ -64,7 +64,7 @@ class BlogContext {
 
     /**
      * @function getByPermalink
-     * @description Get blog by permalink from the database
+     * @desc Get blog by permalink from the database
      * 
      * @param {string} permalink The permalink use to find a specific blog post
      * @returns Returns found blog post from the database
@@ -86,6 +86,6 @@ class BlogContext {
 }
 
 /**
- * @description Export a new instance of the class.
+ * @desc Export a new instance of the class.
  */
 module.exports = new BlogContext();

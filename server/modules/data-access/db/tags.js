@@ -17,7 +17,7 @@ class TagContext {
 
     /**
      * @function getAll
-     * @description Get all tags from the database
+     * @desc Get all tags from the database
      * 
      * @param {object} query MongoDB Query Object
      * @returns Returns all Tags from the database
@@ -39,6 +39,6 @@ class TagContext {
 }
 
 /**
- * @description Export a new instance of the class.
+ * @desc Export a new instance of the class.
  */
 module.exports = new TagContext();

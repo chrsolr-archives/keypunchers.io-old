@@ -7,7 +7,7 @@ const UserModel = require('../models/User');
 
 /**
  * @class UserContext
- * @description Class for accessing users in the database
+ * @desc Class for accessing users in the database
  */
 class UserContext {
     /**
@@ -17,6 +17,7 @@ class UserContext {
 
     /**
      * @function login
+     * @desc Login user
      * 
      * @param {object} profile User profile
      * @returns Returns user profile
@@ -55,7 +56,7 @@ class UserContext {
 
     /**
      * @function getById
-     * @description Get user by ID from the database
+     * @desc Get user by ID from the database
      * 
      * @param {string} id User id
      * @returns Returns user profile
@@ -74,6 +75,6 @@ class UserContext {
 }
 
 /**
- * @description Export a new instance of the class.
+ * @desc Export a new instance of the class.
  */
 module.exports = new UserContext();

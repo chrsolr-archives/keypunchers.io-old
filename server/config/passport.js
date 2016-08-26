@@ -13,7 +13,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 /**
  * @function stragetyHandler
- * @description Handles Passport Strategies For Login/Sign up
+ * @desc Handles Passport Strategies For Login/Sign up
  * 
  * @param {object} profile User profile
  * @param {function} done Strategy callbackURL
@@ -29,10 +29,15 @@ function stragetyHandler(profile, done) {
 }
 
 module.exports = (app) => {
-
+    /**
+     * @desc Setup passport
+     */
     app.use(passport.initialize());
     app.use(passport.session());
 
+    /**
+     * @desc Setup GoogleStrategy 
+     */
     passport.use(new GoogleStrategy({
         clientID: config.apis.google.clientID,
         clientSecret: config.apis.google.clientSecret,
@@ -57,10 +62,16 @@ module.exports = (app) => {
         stragetyHandler(user_schema, done);
     }));
 
+    /**
+     * @desc Serialize passport user
+     */
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });
 
+    /**
+     * @desc Deserialize passport user
+     */
     passport.deserializeUser((userId, done) => {
         db.users.getById(userId).then(res => done(null, res));
     });
