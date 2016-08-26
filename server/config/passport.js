@@ -1,10 +1,15 @@
 'use strict';
 
+/**
+ * @requires modules:./config
+ * @requires modules:passport
+ * @requires modules:../modules/data-access/db
+ * @requires modules:passport-google-oauth20
+ */
 const config = require('./config');
 const passport = require('passport');
 const db = require('../modules/data-access/db');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
 
 /**
  * @function stragetyHandler

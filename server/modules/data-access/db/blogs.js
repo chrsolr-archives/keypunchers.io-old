@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @description require all needed modules
+ * @requires module:../models/Blog
  */
 const model = require('../models/Blog');
 

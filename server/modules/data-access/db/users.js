@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @description require all needed modules
+ * @requires module:../models/User
  */
 const UserModel = require('../models/User');
 
