@@ -2,8 +2,9 @@
 
 const config = require('./config');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const db = require('../modules/data-access/db');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 
 module.exports = (app) => {
     app.use(passport.initialize());
@@ -19,6 +20,20 @@ module.exports = (app) => {
         }
 
         db.users.addGoogleProfile(profile, accessToken)
+            .then((res) => done(null, res), (err) => done(err, null));
+    }));
+
+    passport.use(new TwitterStrategy({
+        consumerKey: config.apis.twitter.consumerKey,
+        consumerSecret: config.apis.twitter.consumerSecret,
+        callbackURL: 'http://localhost:3000/auth/twitter/callback',
+        passReqToCallback: true
+    }, function (req, token, tokenSecret, profile, done) {
+        if (!profile) { 
+            return done('Google authentication failed', profile); 
+        }
+
+        db.users.addTwitterProfile(profile, token, tokenSecret)
             .then((res) => done(null, res), (err) => done(err, null));
     }));
 

@@ -4,12 +4,17 @@ block content
     .container
         section#login-wrapper
             .content
-                img.center-block.animated.fadeIn(class="kp-logo", src="/assets/svgs/logo-brand-color.svg")
+                img.center-block.animated.fadeIn.animation-delay-500ms(class="kp-logo", src="/assets/svgs/logo-brand-color.svg")
                 h2.text-center.animated.fadeInUp.animation-delay-1000ms
                     span Key
                     span Punchers
                     span .io
-                ul
+
+                h4.animated.fadeInUp.animation-delay-1500ms.page-header(style="margin-top: 0;") Choose a provide to login
+                ul.animated.fadeInUp.animation-delay-2000ms
                     li
                         a(href="/auth/google")
                             i.fa.fa-3x.fa-google-plus
+                    li
+                        a(href="/auth/twitter")
+                            i.fa.fa-3x.fa-twitter

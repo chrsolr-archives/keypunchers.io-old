@@ -120,6 +120,22 @@ html {
       .navbar ul.nav.navbar-nav.navbar-right li a:before, .navbar ul.nav.navbar-nav.navbar-right li a:after {
         content: ''; } }
 
+.animation-delay-500ms {
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms; }
+
+.animation-delay-1000ms {
+  -webkit-animation-delay: 1000ms;
+  animation-delay: 1000ms; }
+
+.animation-delay-1500ms {
+  -webkit-animation-delay: 1500ms;
+  animation-delay: 1500ms; }
+
+.animation-delay-2000ms {
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms; }
+
 .row {
   margin: 0; }
 

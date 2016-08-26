@@ -1,5 +1,18 @@
 @import "./partials/_utils";
 
+.animation-delay-500ms {
+    @include animation-delay(500ms);
+}
+.animation-delay-1000ms {
+    @include animation-delay(1000ms);
+}
+.animation-delay-1500ms {
+    @include animation-delay(1500ms);
+}
+.animation-delay-2000ms {
+    @include animation-delay(2000ms);
+}
+
 .row { 
     margin: 0;
 }

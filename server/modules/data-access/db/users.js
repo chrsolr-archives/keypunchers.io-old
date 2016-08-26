@@ -22,8 +22,8 @@ class UserContext {
                         return value.type === 'account';
                     }).value,
                     image: profile.photos[0].value,
-                    firstName: profile.name.givenName,
-                    lastName: profile.name.familyName,
+                    name: `${profile.name.givenName} ${profile.name.familyName}`,
+                    name_canonical: `${profile.name.givenName} ${profile.name.familyName}`,
                     google: {
                         id: profile.id,
                         token: accessToken
@@ -38,6 +38,46 @@ class UserContext {
 
                     return resolve(user);
                 });
+            });
+        });
+    }
+
+    addTwitterProfile(profile, token, secretToken) {
+
+        return new Promise((resolve, reject) => {
+
+            const email = profile.emails.find(value => value.type === 'account').value;
+
+            model.findOne({ email: email }, (err, user) => {
+                if (user && user.google.id) {
+                    return resolve(user);
+                }
+
+                const user_schema = {
+                    displayName: profile.displayName,
+                    email: profile.emails.find((value) => {
+                        return value.type === 'account';
+                    }).value,
+                    image: profile.photos[0].value,
+                    firstName: profile.name.givenName,
+                    lastName: profile.name.familyName,
+                    twitter: {
+                        id: profile.id,
+                        token: token,
+                        secretToken: secretToken
+                    }
+                };
+
+                return resolve(user);
+
+                // var User = new model(user_schema);
+                // User.save((err, user) => {
+                //     if (err) {
+                //         return reject(err);
+                //     }
+
+                //     return resolve(user);
+                // });
             });
         });
     }

@@ -17,6 +17,10 @@ const config = (() => {
         google: {
             clientID: process.env.GOOGLE_CLIENT_ID || '720674278160-lq7ncnm0uqfegd5eft6v11qltrjov1oh.apps.googleusercontent.com',
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'bzQg41JGPAPbGREz63du2feu'
+        },
+        twitter: {
+            consumerKey: process.env.TWITTER_CONSUMER_KEY || 'vV8pkzFaiwe9N4fFFMUF1C3o0',
+            consumerSecret: process.env.TWITTER_CONSUMER_SECRET || 'mIhRHS5VCYFi1JO9kEDjZnbJrKiLjhObTcVlRnkqw1VBFp2ZZH'
         }
     };
 
