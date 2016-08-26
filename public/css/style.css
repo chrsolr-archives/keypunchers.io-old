@@ -88,36 +88,38 @@ html {
     background-color: transparent; }
     .navbar .dropdown.open:hover, .navbar .dropdown.open:active, .navbar .dropdown.open:focus, .navbar .dropdown.open > a:hover, .navbar .dropdown.open > a:active, .navbar .dropdown.open > a:focus, .navbar .dropdown-menu > li > a:hover, .navbar .dropdown-menu > li > a:active, .navbar .dropdown-menu > li > a:focus {
       background-color: transparent; }
-  .navbar ul.nav.navbar-nav.navbar-right {
+    .navbar .dropdown.open:before, .navbar .dropdown.open:after, .navbar .dropdown.open > a:before, .navbar .dropdown.open > a:after, .navbar .dropdown-menu > li > a:before, .navbar .dropdown-menu > li > a:after {
+      content: '' !important; }
+  .navbar .nav.navbar-nav.navbar-right {
     line-height: 80px; }
-    .navbar ul.nav.navbar-nav.navbar-right li a {
+    .navbar .nav.navbar-nav.navbar-right li a {
       line-height: 50px;
       position: relative; }
-      .navbar ul.nav.navbar-nav.navbar-right li a:before, .navbar ul.nav.navbar-nav.navbar-right li a:after {
+      .navbar .nav.navbar-nav.navbar-right li a:before, .navbar .nav.navbar-nav.navbar-right li a:after {
         position: absolute;
         opacity: 0;
         color: #1f7a7a;
         transition: all .3s ease; }
-      .navbar ul.nav.navbar-nav.navbar-right li a:before {
+      .navbar .nav.navbar-nav.navbar-right li a:before {
         content: '[';
         left: 0; }
-      .navbar ul.nav.navbar-nav.navbar-right li a:after {
+      .navbar .nav.navbar-nav.navbar-right li a:after {
         content: ']';
         right: 0; }
-      .navbar ul.nav.navbar-nav.navbar-right li a:hover {
+      .navbar .nav.navbar-nav.navbar-right li a:hover {
         color: #cc3434; }
-        .navbar ul.nav.navbar-nav.navbar-right li a:hover:before {
+        .navbar .nav.navbar-nav.navbar-right li a:hover:before {
           opacity: 1;
           -webkit-transform: translateX(5px);
           -ms-transform: translateX(5px);
           transform: translateX(5px); }
-        .navbar ul.nav.navbar-nav.navbar-right li a:hover:after {
+        .navbar .nav.navbar-nav.navbar-right li a:hover:after {
           opacity: 1;
           -webkit-transform: translateX(-5px);
           -ms-transform: translateX(-5px);
           transform: translateX(-5px); }
     @media screen and (max-width: 767px) {
-      .navbar ul.nav.navbar-nav.navbar-right li a:before, .navbar ul.nav.navbar-nav.navbar-right li a:after {
+      .navbar .nav.navbar-nav.navbar-right li a:before, .navbar .nav.navbar-nav.navbar-right li a:after {
         content: ''; } }
 
 .animation-delay-500ms {

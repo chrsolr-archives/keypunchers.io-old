@@ -68,9 +68,13 @@
         &:hover, &:active, &:focus {
             background-color: transparent;
         }
+
+        &:before, &:after {
+            content: '' !important;
+        }
     }
 
-    ul.nav.navbar-nav.navbar-right {
+    .nav.navbar-nav.navbar-right {
         line-height: $navbar-height;
         
         li {

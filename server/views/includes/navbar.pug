@@ -15,11 +15,18 @@ nav.navbar.navbar-default.navbar-fixed-top
                 li
                     a(href="/blogs", data-toggle="collapse", data-target=".navbar-collapse.in") Blog
                 if user && user.isAnAdmin
-                    li
-                        a(href="/profile", data-toggle="collapse", data-target=".navbar-collapse.in") Profile
-                if user
+                    li.dropdown
+                        a(href="#", class="dropdown-toggle", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false") Account 
+                            span.caret
+                        ul.dropdown-menu
+                            li
+                                a(href="/profile", data-toggle="collapse", data-target=".navbar-collapse.in") Profile
+                            li
+                                a(href="/logout", data-toggle="collapse", data-target=".navbar-collapse.in") Logout
+                if user && !user.isAnAdmin
                     li
                         a(href="/logout", data-toggle="collapse", data-target=".navbar-collapse.in") Logout
                 if !user
                     li
                         a(href="/login", data-toggle="collapse", data-target=".navbar-collapse.in") Login
+                
