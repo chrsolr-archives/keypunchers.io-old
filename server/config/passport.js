@@ -5,6 +5,15 @@ const passport = require('passport');
 const db = require('../modules/data-access/db');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+
+/**
+ * @function stragetyHandler
+ * @description Handles Passport Strategies For Login/Sign up
+ * 
+ * @param {object} profile User profile
+ * @param {function} done Strategy callbackURL
+ * @return {object} Returns user profile
+ */
 function stragetyHandler(profile, done) {
     if (!profile) {
         return done(new Error(`Information returned by ${profile.provider} was empty.`), profile);
@@ -15,15 +24,10 @@ function stragetyHandler(profile, done) {
 }
 
 module.exports = (app) => {
-    /**
-     * @desc Set passport with expresssjs
-     */
+
     app.use(passport.initialize());
     app.use(passport.session());
 
-    /**
-     * @desc Setup Google Passport Strategy
-     */
     passport.use(new GoogleStrategy({
         clientID: config.apis.google.clientID,
         clientSecret: config.apis.google.clientSecret,
@@ -48,16 +52,10 @@ module.exports = (app) => {
         stragetyHandler(user_schema, done);
     }));
 
-    /**
-     * @desc Serialize User
-     */
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });
 
-    /**
-     * @desc Deserialize User
-     */
     passport.deserializeUser((userId, done) => {
         db.users.getById(userId).then(res => done(null, res));
     });

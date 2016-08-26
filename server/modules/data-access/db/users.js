@@ -1,10 +1,26 @@
 'use strict';
 
-const UserModel = require('../models/User');;
+/**
+ * @description require all needed modules
+ */
+const UserModel = require('../models/User');
 
+/**
+ * @class UserContext
+ * @description Class for accessing users in the database
+ */
 class UserContext {
+    /**
+     * Creates an instance of UserContext.
+     */
     constructor() { }
 
+    /**
+     * @function login
+     * 
+     * @param {object} profile User profile
+     * @returns Returns user profile
+     */
     login(profile) {
         return new Promise((resolve, reject) => {
             var query = UserModel.findOne({ email_canonical: profile.email_canonical });
@@ -37,6 +53,13 @@ class UserContext {
         });
     }
 
+    /**
+     * @function getById
+     * @description Get user by ID from the database
+     * 
+     * @param {string} id User id
+     * @returns Returns user profile
+     */
     getById(id) {
         return new Promise((resolve, reject) => {
             UserModel.findOne({ _id: id }).exec((err, user) => {
@@ -50,4 +73,7 @@ class UserContext {
     }
 }
 
+/**
+ * @description Export a new instance of the class.
+ */
 module.exports = new UserContext();

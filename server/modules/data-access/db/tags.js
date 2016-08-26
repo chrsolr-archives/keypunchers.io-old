@@ -1,10 +1,27 @@
 'use strict';
 
+/**
+ * @description require all needed modules
+ */
 const model = require('../models/Tag');
 
+/**
+ * @class TagContext
+ * @description Class for accessing tags in the database
+ */
 class TagContext {
+    /**
+     * Creates an instance of TagContext.
+     */
     constructor() { }
 
+    /**
+     * @function getAll
+     * @description Get all tags from the database
+     * 
+     * @param {object} query MongoDB Query Object
+     * @returns Returns all Tags from the database
+     */
     getAll(query) {
         query = query || {};
 
@@ -21,4 +38,7 @@ class TagContext {
     }
 }
 
+/**
+ * @description Export a new instance of the class.
+ */
 module.exports = new TagContext();

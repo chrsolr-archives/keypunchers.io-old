@@ -1,10 +1,27 @@
 'use strict';
 
+/**
+ * @description require all needed modules
+ */
 const model = require('../models/Blog');
 
+/**
+ * @class BlogContext
+ * @description Class for accessing blogs in the database
+ */
 class BlogContext {
+    /**
+     * Creates an instance of BlogContext.
+     */
     constructor() { }
 
+    /**
+     * @function getAll
+     * @description Get all blogs from the database
+     * 
+     * @param {object} query MongoDB Query Object
+     * @returns Returns all blogs from the database
+     */
     getAll(query) {
         query = query || {};
 
@@ -20,6 +37,13 @@ class BlogContext {
         });
     }
 
+    /**
+     * @function getByTag
+     * @description Get all blogs by the tag name from the database
+     * 
+     * @param {string} tag Tag name to search for
+     * @returns Returns all found blogs from the database
+     */
     getByTag(tag) {
         return new Promise((resolve, reject) => {
             var query = model.find();
@@ -38,6 +62,13 @@ class BlogContext {
         });
     }
 
+    /**
+     * @function getByPermalink
+     * @description Get blog by permalink from the database
+     * 
+     * @param {string} permalink The permalink use to find a specific blog post
+     * @returns Returns found blog post from the database
+     */
     getByPermalink(permalink) {
         return new Promise((resolve, reject) => {
             var query = model.findOne();
@@ -54,4 +85,7 @@ class BlogContext {
     }
 }
 
+/**
+ * @description Export a new instance of the class.
+ */
 module.exports = new BlogContext();
