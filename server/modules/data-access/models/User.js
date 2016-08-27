@@ -6,9 +6,9 @@ const UserModel = (() => {
 
     const schema = {
         image: { type: String, trim: true },
-        email: { type: String, required: true, index: { unique: true }, trim: true },
-        email_canonical: { type: String, uppercase: true, required: true, trim: true, index: { unique: true }},
-        name: { type: String, trim: true, required: true},
+        email: { type: String, trim: true },
+        email_canonical: { type: String, uppercase: true, trim: true, index: { unique: true } },
+        name: { type: String, trim: true },
         displayName: { type: String, required: true, trim: true },
 
         isAnAdmin: { type: Boolean, default: false },
@@ -24,7 +24,7 @@ const UserModel = (() => {
     const UserSchema = new mongoose.Schema(schema);
 
     UserSchema.pre('save', function (next) {
-        
+
         this.email_canonical = this.email;
 
         next();

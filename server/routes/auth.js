@@ -12,6 +12,13 @@ const mountRoutes = (app) => {
         failureRedirect: '/login/'
     }));
 
+    app.get('/auth/github', passport.authenticate('github'));
+
+    app.get('/auth/github/callback', passport.authenticate('github', {
+        successRedirect: '/',
+        failureRedirect: '/login/'
+    }));
+
     app.get('/auth/twitter', passport.authenticate('twitter'));
 
     app.get('/auth/twitter/callback', passport.authenticate('twitter', {

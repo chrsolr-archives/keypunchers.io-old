@@ -24,7 +24,10 @@ class UserContext {
      */
     login(profile) {
         return new Promise((resolve, reject) => {
-            var query = UserModel.findOne({ email_canonical: profile.email_canonical });
+            const delimiter = `${profile.provider}.id`;
+
+            var query = UserModel.findOne();
+            query.where(delimiter).equals(profile[profile.provider].id);
             query.exec((err, user) => {
                 if (err) {
                     return reject(err);

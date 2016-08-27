@@ -5,11 +5,15 @@
  * @requires modules:passport
  * @requires modules:../modules/data-access/db
  * @requires modules:passport-google-oauth20
+ * @requires modules:passport-github
+ * @requires modules:passport-twitter
  */
 const config = require('./config');
 const passport = require('passport');
 const db = require('../modules/data-access/db');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GithubStrategy = require('passport-github').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 
 /**
  * @function stragetyHandler
@@ -55,7 +59,66 @@ module.exports = (app) => {
             provider: 'google',
             google: {
                 id: profile.id,
-                token: accessToken
+                token: accessToken,
+                nickname: profile._json.nickname,
+                plus_url: profile._json.url
+            }
+        };
+
+        stragetyHandler(user_schema, done);
+    }));
+
+    /**
+     * @desc Setup GithubStrategy 
+     */
+    passport.use(new GithubStrategy({
+        clientID: config.apis.github.clientID,
+        clientSecret: config.apis.github.clientSecret,
+        callbackURL: config.apis.github.callbackURL
+    }, function (accessToken, refreshToken, profile, done) {
+
+        const email = (profile.emails) ? profile.emails[0].value : '';
+
+        const user_schema = {
+            displayName: profile.displayName,
+            email: email,
+            email_canonical: email.toUpperCase(),
+            image: profile.photos[0].value,
+            name: profile._json.name,
+            provider: 'github',
+            github: {
+                id: profile.id,
+                token: accessToken,
+                username: profile.username,
+                profile_url: profile.profileUrl
+            }
+        };
+
+        stragetyHandler(user_schema, done);
+    }));
+
+    /**
+     * @desc Setup TwitterStrategy 
+     */
+    passport.use(new TwitterStrategy({
+        consumerKey: config.apis.twitter.consumerKey,
+        consumerSecret: config.apis.twitter.consumerSecret,
+        callbackURL: config.apis.twitter.callbackURL
+    }, function (accessToken, refreshToken, profile, done) {
+
+        const user_schema = {
+            displayName: profile.displayName,
+            email: '',
+            email_canonical: '',
+            image: profile.photos[0].value,
+            name: profile._json.name,
+            provider: 'twitter',
+            twitter: {
+                id: profile.id,
+                token: accessToken,
+                username: profile.username,
+                profile_url: `www.twitter.com/${profile.username}`,
+                screen_name: profile._json.screen_name
             }
         };
 

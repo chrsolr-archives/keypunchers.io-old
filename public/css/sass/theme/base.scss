@@ -15,6 +15,7 @@ html {
             padding-top: $navbar-height + 20px;
             position: relative;
             z-index: 1;
+            overflow: hidden;
             @include bottom-shadow;
         }
     }

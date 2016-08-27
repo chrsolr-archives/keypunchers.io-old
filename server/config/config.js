@@ -26,9 +26,9 @@ const config = (() => {
             callbackURL: process.env.GITHUB_CALLBACK || '/auth/github/callback'
         },
         twitter: {
-            consumerKey: process.env.TWITTER_CONSUMER_KEY || '',
-            consumerSecret: process.env.TWITTER_CONSUMER_SECRET || '',
-            callbackURL: process.env.TWITTER_CALLBACK || ''
+            consumerKey: process.env.TWITTER_CONSUMER_KEY || 'qcrINgXTo1JtDaU5ZOxEFgj9C',
+            consumerSecret: process.env.TWITTER_CONSUMER_SECRET || '2ryd6ZN2WBMCAaYC4hHMKw5HAFuOaPvIoG0TQ9WrHXXRH00yxH',
+            callbackURL: process.env.TWITTER_CALLBACK || '/auth/twitter/callback'
         }
     };
 
