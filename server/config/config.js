@@ -10,7 +10,8 @@ const config = (() => {
     const server = {
         PORT: process.env.PORT || 3000,
         ENV: process.env.NODE_ENV || 'DEV',
-        SECRET: process.env.SECRET || 'SECRET'
+        SECRET: process.env.SECRET || 'SECRET',
+        BRAND_TITLE: process.env.BRAND_TITLE || 'KeyPunchers.io-DEV'
     };
 
     const apis = {
