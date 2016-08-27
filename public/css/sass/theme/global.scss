@@ -1,5 +1,10 @@
 @import "./partials/_utils";
 
+.img-border-circle {
+    padding: 2px;
+    border: 1px solid #f0f0f0;
+}
+
 .animation-delay-500ms {
     @include animation-delay(500ms);
 }

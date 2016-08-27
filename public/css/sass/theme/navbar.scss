@@ -74,6 +74,18 @@
         }
     }
 
+    .dropdown-menu {
+        border-radius: 0;
+
+        li {
+            border-bottom: 1px #f0f0f0 solid;
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
     .nav.navbar-nav.navbar-right {
         line-height: $navbar-height;
         

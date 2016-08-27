@@ -3,5 +3,12 @@ extends ../layout.pug
 block content
 
     .container
-        img.img-responsive.img-circle(width="48px", src=user.image)
-        h1 #{user.displayName}
+        .row
+            .col-sm-4
+                .media
+                    .media-left
+                        img.img-circle.img-border-circle.media-object(src=user.image, width="50px", alt="Profile Image")
+                    .media-body
+                        h3.media-heading #{user.displayName}
+                        p #{user.email}
+            .col-sm-8
