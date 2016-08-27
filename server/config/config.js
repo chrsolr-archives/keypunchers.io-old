@@ -4,30 +4,30 @@ const config = (() => {
     const CLIENT = './public/';
 
     const db = {
-        URL: process.env.DB_URL || 'mongodb://admin:password@ds161225.mlab.com:61225/kpdb-dev'
+        URL: process.env.DB_URL || 'mongodb://dummy:dummy@ds161225.mlab.com:61225/kpdb-dev'
     };
 
     const server = {
         PORT: process.env.PORT || 3000,
         ENV: process.env.NODE_ENV || 'DEV',
-        SECRET: process.env.SECRET || 'K3yPunch3r5'
+        SECRET: process.env.SECRET || 'SECRET'
     };
 
     const apis = {
         google: {
-            clientID: process.env.GOOGLE_CLIENT_ID || '720674278160-lq7ncnm0uqfegd5eft6v11qltrjov1oh.apps.googleusercontent.com',
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'bzQg41JGPAPbGREz63du2feu',
+            clientID: process.env.GOOGLE_CLIENT_ID || '864354150014-6ks73u7keiedflbpt8roqoatdosf07d4.apps.googleusercontent.com',
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET || 'beGjU-IA2tLNV8HKy-4Zr-2W',
             callbackURL: process.env.GOOGLE_CALLBACK || '/auth/google/callback'
         },
         github: {
-            clientID: process.env.GOOGLE_CLIENT_ID || '8ff53b97b4d8b012128f',
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET || '7ad2eb3d456dcec90cdc6b497e85e896115a5414',
-            callbackURL: process.env.GOOGLE_CALLBACK || '/auth/github/callback'
+            clientID: process.env.GITHUB_CLIENT_ID || '4b2e694149975ebfde17',
+            clientSecret: process.env.GITHUB_CLIENT_SECRET || '7498b636a3781e079cc9e8fc17241639644cd7c5',
+            callbackURL: process.env.GITHUB_CALLBACK || '/auth/github/callback'
         },
         twitter: {
-            consumerKey: process.env.TWITTER_CONSUMER_KEY || 'vV8pkzFaiwe9N4fFFMUF1C3o0',
-            consumerSecret: process.env.TWITTER_CONSUMER_SECRET || 'mIhRHS5VCYFi1JO9kEDjZnbJrKiLjhObTcVlRnkqw1VBFp2ZZH',
-            callbackURL: process.env.TWITTER_CALLBACK || '/auth/twitter/callback'
+            consumerKey: process.env.TWITTER_CONSUMER_KEY || '',
+            consumerSecret: process.env.TWITTER_CONSUMER_SECRET || '',
+            callbackURL: process.env.TWITTER_CALLBACK || ''
         }
     };
 
