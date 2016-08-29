@@ -1,0 +1,20 @@
+@import "./partials/_utils";
+
+ul.link-social-media {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        margin-right: spacing(2);
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        a:hover {
+            color: $color-brand-secondary;
+        }
+    }
+}

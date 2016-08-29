@@ -10,7 +10,6 @@ html {
       background-color: white;
       padding-top: 100px;
       position: relative;
-      z-index: 1;
       overflow: hidden;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.4); }
 
@@ -313,3 +312,15 @@ section.banner {
           #login-wrapper .content ul li a i:hover, #login-wrapper .content ul li a i:focus, #login-wrapper .content ul li a i:active {
             text-decoration: none;
             color: #cc3434; }
+
+ul.link-social-media {
+  list-style: none;
+  padding: 0;
+  text-align: center; }
+  ul.link-social-media li {
+    display: inline-block;
+    margin-right: 10px; }
+    ul.link-social-media li:last-child {
+      margin-right: 0; }
+    ul.link-social-media li a:hover {
+      color: #cc3434; }

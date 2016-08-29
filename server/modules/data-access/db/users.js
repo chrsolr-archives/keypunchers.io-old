@@ -26,8 +26,9 @@ class UserContext {
         return new Promise((resolve, reject) => {
             const delimiter = `${profile.provider}.id`;
 
-            var query = UserModel.findOne();
-            query.where(delimiter).equals(profile[profile.provider].id);
+            var query = UserModel.findOne({
+                $or: [{ [delimiter]: profile[profile.provider].id }, { _id: profile._id }]
+            });
             query.exec((err, user) => {
                 if (err) {
                     return reject(err);
@@ -39,6 +40,7 @@ class UserContext {
 
                 if (user) {
                     user[profile.provider] = profile[profile.provider];
+                    user.provider = profile.provider;
                     user.save();
                     return resolve(user);
                 }

@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const UserModel = (() => {
 
     const schema = {
-        name: { type: String, required: true },
         provider: { type: String, required: true },
 
         isAnAdmin: { type: Boolean, default: false },

@@ -11,4 +11,35 @@ block content
                     .media-body
                         h3.media-heading #{user[user.provider].displayName}
                         p Account Provider: #{user.provider}
+                h4.page-header Manage
+                if !user['github'] || !user['reddit'] || !user['twitter'] || !user['google']
+                    ul
+                        li
+                            a(href="#", data-toggle="modal", data-target="#link-social-media") Link Social Media Accounts
             .col-sm-8
+    
+        .modal.fade#link-social-media(role="dialog", tabindex="-1")
+            .modal-dialog.modal-sm(role="document")
+                .modal-content
+                    .modal-header
+                        button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                        h4.modal-title Link Social Media Accounts
+                    .modal-body
+                        ul.link-social-media
+                            if !user['github']
+                                li
+                                    a(href="/auth/github")
+                                        i.fa.fa-github.fa-2x
+                            if !user['reddit']
+                                li
+                                    a(href="/auth/reddit")
+                                        i.fa.fa-reddit.fa-2x
+                            if !user['twitter']
+                                li
+                                    a(href="/auth/twitter")
+                                        i.fa.fa-twitter.fa-2x
+                            if !user['google']
+                                li
+                                    a(href="/auth/google")
+                                        i.fa.fa-google-plus.fa-2x

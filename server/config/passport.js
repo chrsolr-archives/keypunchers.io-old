@@ -4,14 +4,15 @@
  * @requires modules:./config
  * @requires modules:passport
  * @requires modules:../modules/data-access/db
- * @requires modules:passport-google-oauth20
+ * @requires modules:passport-google-oauth
  * @requires modules:passport-github
  * @requires modules:passport-twitter
+ * @requires modules:passport-reddit
  */
 const config = require('./config');
 const passport = require('passport');
 const db = require('../modules/data-access/db');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const GithubStrategy = require('passport-github').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const RedditStrategy = require('passport-reddit').Strategy;
@@ -24,9 +25,13 @@ const RedditStrategy = require('passport-reddit').Strategy;
  * @param {function} done Strategy callbackURL
  * @return {object} Returns user profile
  */
-function stragetyHandler(profile, done) {
+function stragetyHandler(profile, req, done) {
     if (!profile) {
         return done(new Error(`Information returned by ${profile.provider} was empty.`), profile);
+    }
+
+    if (req.user) {
+        profile._id = req.user._id;
     }
 
     db.users.login(profile)
@@ -46,8 +51,9 @@ module.exports = (app) => {
     passport.use(new GoogleStrategy({
         clientID: config.apis.google.clientID,
         clientSecret: config.apis.google.clientSecret,
-        callbackURL: config.apis.google.callbackURL
-    }, function (accessToken, refreshToken, profile, done) {
+        callbackURL: config.apis.google.callbackURL,
+        passReqToCallback: true
+    }, function (req, accessToken, refreshToken, profile, done) {
 
         const email = profile.emails.find(value => value.type === 'account').value;
 
@@ -65,7 +71,7 @@ module.exports = (app) => {
             }
         };
 
-        stragetyHandler(user_schema, done);
+        stragetyHandler(user_schema, req, done);
     }));
 
     /**
@@ -74,8 +80,9 @@ module.exports = (app) => {
     passport.use(new GithubStrategy({
         clientID: config.apis.github.clientID,
         clientSecret: config.apis.github.clientSecret,
-        callbackURL: config.apis.github.callbackURL
-    }, function (accessToken, refreshToken, profile, done) {
+        callbackURL: config.apis.github.callbackURL,
+        passReqToCallback: true
+    }, function (req, accessToken, refreshToken, profile, done) {
 
         const email = (profile.emails) ? profile.emails[0].value : '';
 
@@ -93,7 +100,7 @@ module.exports = (app) => {
             }
         };
 
-        stragetyHandler(user_schema, done);
+        stragetyHandler(user_schema, req, done);
     }));
 
     /**
@@ -102,8 +109,9 @@ module.exports = (app) => {
     passport.use(new TwitterStrategy({
         consumerKey: config.apis.twitter.consumerKey,
         consumerSecret: config.apis.twitter.consumerSecret,
-        callbackURL: config.apis.twitter.callbackURL
-    }, function (accessToken, refreshToken, profile, done) {
+        callbackURL: config.apis.twitter.callbackURL,
+        passReqToCallback: true
+    }, function (req, accessToken, refreshToken, profile, done) {
 
         const user_schema = {
             provider: profile.provider,
@@ -119,7 +127,7 @@ module.exports = (app) => {
             }
         };
 
-        stragetyHandler(user_schema, done);
+        stragetyHandler(user_schema, req, done);
     }));
 
     /**
@@ -128,8 +136,9 @@ module.exports = (app) => {
     passport.use(new RedditStrategy({
         clientID: config.apis.reddit.clientID,
         clientSecret: config.apis.reddit.clientSecret,
-        callbackURL: config.apis.reddit.callbackURL
-    }, function (accessToken, refreshToken, profile, done) {
+        callbackURL: config.apis.reddit.callbackURL,
+        passReqToCallback: true
+    }, function (req, accessToken, refreshToken, profile, done) {
 
         const user_schema = {
             provider: profile.provider,
@@ -142,20 +151,20 @@ module.exports = (app) => {
             }
         };
 
-        stragetyHandler(user_schema, done);
+        stragetyHandler(user_schema, req, done);
     }));
 
     /**
      * @desc Serialize passport user
      */
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        done(null, user);
     });
 
     /**
      * @desc Deserialize passport user
      */
-    passport.deserializeUser((userId, done) => {
-        db.users.getById(userId).then(res => done(null, res));
+    passport.deserializeUser((user, done) => {
+        db.users.getById(user._id).then(res => done(null, res));
     });
 };
