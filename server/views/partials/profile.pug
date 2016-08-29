@@ -5,10 +5,10 @@ block content
     .container
         .row
             .col-sm-4
-                .media
+                .media(style={marginLeft: 0})
                     .media-left
-                        img.img-circle.img-border-circle.media-object(src=user.image, width="50px", alt="Profile Image")
+                        img.img-circle.img-border-circle.media-object(src=user[user.provider].image || '/assets/images/default-profile-image.jpg', width="50px", alt="Profile Image")
                     .media-body
-                        h3.media-heading #{user.displayName}
-                        p #{user.email}
+                        h3.media-heading #{user[user.provider].displayName}
+                        p Account Provider: #{user.provider}
             .col-sm-8
