@@ -29,6 +29,11 @@ const config = (() => {
             consumerKey: process.env.TWITTER_CONSUMER_KEY || 'qcrINgXTo1JtDaU5ZOxEFgj9C',
             consumerSecret: process.env.TWITTER_CONSUMER_SECRET || '2ryd6ZN2WBMCAaYC4hHMKw5HAFuOaPvIoG0TQ9WrHXXRH00yxH',
             callbackURL: process.env.TWITTER_CALLBACK || '/auth/twitter/callback'
+        },
+        reddit: {
+            clientID: process.env.REDDIT_CLIENT_KEY || 'cVYX853F95qJ3Q',
+            clientSecret: process.env.REDDIT_CLIENT_SECRET || '9OnQNqFpNSndXx6pOBI_LQoCZWw',
+            callbackURL: process.env.REDDIT_CALLBACK || '/auth/reddit/callback'
         }
     };
 

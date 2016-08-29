@@ -14,6 +14,7 @@ const db = require('../modules/data-access/db');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const GithubStrategy = require('passport-github').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
+const RedditStrategy = require('passport-reddit').Strategy;
 
 /**
  * @function stragetyHandler
@@ -51,14 +52,13 @@ module.exports = (app) => {
         const email = profile.emails.find(value => value.type === 'account').value;
 
         const user_schema = {
-            displayName: profile.displayName,
-            email: email,
-            email_canonical: email.toUpperCase(),
-            image: profile.photos[0].value,
-            name: `${profile.name.givenName} ${profile.name.familyName}`,
-            provider: 'google',
+            provider: profile.provider,
             google: {
                 id: profile.id,
+                displayName: profile.displayName,
+                email: email,
+                image: profile.photos[0].value,
+                name: `${profile.name.givenName} ${profile.name.familyName}`,
                 token: accessToken,
                 nickname: profile._json.nickname,
                 plus_url: profile._json.url
@@ -80,14 +80,13 @@ module.exports = (app) => {
         const email = (profile.emails) ? profile.emails[0].value : '';
 
         const user_schema = {
-            displayName: profile.displayName,
-            email: email,
-            email_canonical: email.toUpperCase(),
-            image: profile.photos[0].value,
-            name: profile._json.name,
-            provider: 'github',
+            provider: profile.provider,
             github: {
                 id: profile.id,
+                displayName: profile.displayName,
+                email: email,
+                image: profile.photos[0].value,
+                name: profile._json.name,
                 token: accessToken,
                 username: profile.username,
                 profile_url: profile.profileUrl
@@ -107,18 +106,39 @@ module.exports = (app) => {
     }, function (accessToken, refreshToken, profile, done) {
 
         const user_schema = {
-            displayName: profile.displayName,
-            email: '',
-            email_canonical: '',
-            image: profile.photos[0].value,
-            name: profile._json.name,
-            provider: 'twitter',
+            provider: profile.provider,
             twitter: {
                 id: profile.id,
+                displayName: profile.displayName,
+                image: profile.photos[0].value,
+                name: profile._json.name,
                 token: accessToken,
                 username: profile.username,
                 profile_url: `www.twitter.com/${profile.username}`,
                 screen_name: profile._json.screen_name
+            }
+        };
+
+        stragetyHandler(user_schema, done);
+    }));
+
+    /**
+     * @desc Setup TwitterStrategy 
+     */
+    passport.use(new RedditStrategy({
+        clientID: config.apis.reddit.clientID,
+        clientSecret: config.apis.reddit.clientSecret,
+        callbackURL: config.apis.reddit.callbackURL
+    }, function (accessToken, refreshToken, profile, done) {
+
+        const user_schema = {
+            provider: profile.provider,
+            reddit: {
+                id: profile.id,
+                displayName: profile.name,
+                name: profile.name,
+                token: accessToken,
+                username: profile.name,
             }
         };
 

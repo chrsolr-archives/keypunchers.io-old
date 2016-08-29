@@ -5,11 +5,7 @@ const mongoose = require('mongoose');
 const UserModel = (() => {
 
     const schema = {
-        image: { type: String, trim: true },
-        email: { type: String, trim: true },
-        email_canonical: { type: String, uppercase: true, trim: true, index: { unique: true } },
-        name: { type: String, trim: true },
-        displayName: { type: String, required: true, trim: true },
+        provider: { type: String, required: true },
 
         isAnAdmin: { type: Boolean, default: false },
         createdAt: { type: Date, default: Date.now },
@@ -18,16 +14,17 @@ const UserModel = (() => {
         google: { type: Object },
         twitter: { type: Object },
         facebook: { type: Object },
-        github: { type: Object }
+        github: { type: Object },
+        reddit: { type: Object }
     };
 
     const UserSchema = new mongoose.Schema(schema);
 
     UserSchema.pre('save', function (next) {
 
-        this.email_canonical = this.email;
+        this.name_canonical = this.name;
 
-        next();
+        return next();
     });
 
     return UserSchema;

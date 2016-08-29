@@ -43,8 +43,6 @@ class UserContext {
                     return resolve(user);
                 }
 
-                delete profile.provider;
-
                 var User = new UserModel(profile);
                 User.save((err, user) => {
                     if (err) {
