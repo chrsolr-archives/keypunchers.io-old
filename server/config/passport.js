@@ -32,9 +32,12 @@ function stragetyHandler(profile, req, done) {
 
     if (req.user) {
         profile._id = req.user._id;
-    }
 
-    db.users.login(profile)
+        return db.users.linkAccount(profile)
+            .then((res) => done(null, res), (err) => done(new Error(err), null));
+    } else {}
+
+    return db.users.login(profile)
         .then((res) => done(null, res), (err) => done(new Error(err), null));
 }
 

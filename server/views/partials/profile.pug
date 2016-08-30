@@ -10,12 +10,13 @@ block content
                         img.img-circle.img-border-circle.media-object(src=user[user.provider].image || '/assets/images/default-profile-image.jpg', width="50px", alt="Profile Image")
                     .media-body
                         h3.media-heading #{user[user.provider].displayName}
-                        p Account Provider: #{user.provider}
-                h4.page-header Manage
-                if !user['github'] || !user['reddit'] || !user['twitter'] || !user['google']
-                    ul
-                        li
+                        if !user['github'] || !user['reddit'] || !user['twitter'] || !user['google']
                             a(href="#", data-toggle="modal", data-target="#link-social-media") Link Social Media Accounts
+                        else
+                            p All Social Media Accounts Linked
+                h4 Manage
+                hr
+                
             .col-sm-8
     
         .modal.fade#link-social-media(role="dialog", tabindex="-1")

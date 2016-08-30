@@ -26,22 +26,14 @@ class UserContext {
         return new Promise((resolve, reject) => {
             const delimiter = `${profile.provider}.id`;
 
-            var query = UserModel.findOne({
-                $or: [{ [delimiter]: profile[profile.provider].id }, { _id: profile._id }]
-            });
+            var query = UserModel.findOne();
+            query.where(delimiter).equals(profile[profile.provider].id);
             query.exec((err, user) => {
                 if (err) {
                     return reject(err);
                 }
 
                 if (user && user[profile.provider]) {
-                    return resolve(user);
-                }
-
-                if (user) {
-                    user[profile.provider] = profile[profile.provider];
-                    user.provider = profile.provider;
-                    user.save();
                     return resolve(user);
                 }
 
@@ -53,6 +45,53 @@ class UserContext {
 
                     return resolve(user);
                 });
+            });
+        });
+    }
+
+    /**
+     * @function linkAccount
+     * @desc Link user social media accounts
+     * 
+     * @param {object} profile User profile
+     * @returns Returns user profile
+     */
+    linkAccount(profile) {
+        return new Promise((resolve, reject) => {
+            const delimiter = `${profile.provider}.id`;
+
+            var query = UserModel.findOne();
+            query.where(delimiter).equals(profile[profile.provider].id);
+            query.exec((err, user) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                if (!user) {
+                    UserModel.findByIdAndUpdate(profile._id,
+                        { $set: { [profile.provider]: profile[profile.provider], 'provider': profile.provider } },
+                        { upsert: true },
+                        (err, data) => {
+                            if (err) {
+                                return reject(err);
+                            }
+
+                            return resolve(data);
+                        });
+                }
+
+                if (user && user._id !== profile._id) {
+                    UserModel.findByIdAndUpdate(profile._id,
+                        { $set: { [profile.provider]: user[profile.provider], provider: user.provider } })
+                        .exec((err, data) => {
+                            if (err) {
+                                return reject(err);
+                            }
+
+                            user.remove();
+                            return resolve(data);
+                        });
+                }
             });
         });
     }

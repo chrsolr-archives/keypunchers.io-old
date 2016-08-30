@@ -4,9 +4,9 @@ block content
         .container
             img.img-responsive(src=blog.imageUrl)
             h1 #{blog.title}
-            if blog.author.name
+            if blog.author && blog.author.name
                 p By #{blog.author.name}, Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
-            if !blog.author.name
+            else
                 p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
             hr
             div !{blog.content}

@@ -47,6 +47,7 @@ class Middleware {
         const user = req.user;
 
         if (!user || !user.isAnAdmin) {
+            req.session.return_url = req.originalUrl;
             return res.redirect('/login');
         }
 

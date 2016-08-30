@@ -9,23 +9,27 @@ const mountRoutes = (app) => {
     }));
 
     app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect: '/',
         failureRedirect: '/login'
-    }));
+    }), (req, res) => {
+        return res.redirect(req.session.return_url || '/');
+    });
 
     app.get('/auth/github', passport.authenticate('github'));
 
     app.get('/auth/github/callback', passport.authenticate('github', {
-        successRedirect: '/',
         failureRedirect: '/login'
-    }));
+    }), (req, res) => {
+        return res.redirect(req.session.return_url || '/');
+    });
 
     app.get('/auth/twitter', passport.authenticate('twitter'));
 
     app.get('/auth/twitter/callback', passport.authenticate('twitter', {
         successRedirect: '/',
         failureRedirect: '/login'
-    }));
+    }), (req, res) => {
+        return res.redirect(req.session.return_url || '/');
+    });
 
     app.get('/auth/reddit', function (req, res, next) {
         req.session.state = crypto.randomBytes(32).toString('hex');
@@ -38,7 +42,7 @@ const mountRoutes = (app) => {
     app.get('/auth/reddit/callback', function (req, res, next) {
         if (req.query.state === req.session.state) {
             passport.authenticate('reddit', {
-                successRedirect: '/',
+                successRedirect: req.session.return_url || '/',
                 failureRedirect: '/login'
             })(req, res, next);
         } else {

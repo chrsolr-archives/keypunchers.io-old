@@ -23,6 +23,7 @@ const UserModel = (() => {
     UserSchema.pre('save', function (next) {
 
         this.name_canonical = this.name;
+        this.updatedAt = Date.now;
 
         return next();
     });
