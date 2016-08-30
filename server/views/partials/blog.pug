@@ -2,20 +2,22 @@ extends ../layout.pug
 block content
     section.blog-container
         .container
-            img.img-responsive(src=blog.imageUrl)
-            h1 #{blog.title}
-            if blog.author && blog.author.name
-                p By #{blog.author.name}, Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
-            else
-                p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
-            hr
-            div !{blog.content}
-            hr
-            h3.text-center Tags
-            ul.tags
-                each tag in blog.tags
-                    li
-                        a.bracket-animation(href='/blogs?tag=' + tag.name) #{tag.name}
+            .row
+                .col-md-8.col-md-offset-2
+                    img.img-responsive(src=blog.imageUrl)
+                    h1 #{blog.title}
+                    if blog.author && blog.author.name
+                        p By #{blog.author.name}, Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
+                    else
+                        p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
+                    hr
+                    div !{blog.content}
+                    hr
+                    h3.text-center Tags
+                    ul.tags
+                        each tag in blog.tags
+                            li
+                                a.bracket-animation(href='/blogs?tag=' + tag.name) #{tag.name}
         
     script.
         requirejs(['/js/scripts/blog.js']);
