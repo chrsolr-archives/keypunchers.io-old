@@ -6,6 +6,7 @@ const UserModel = (() => {
 
     const schema = {
         provider: { type: String, required: true },
+        name: String,
 
         isAnAdmin: { type: Boolean, default: false },
         createdAt: { type: Date, default: Date.now },
