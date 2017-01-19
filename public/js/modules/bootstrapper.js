@@ -39,7 +39,7 @@ define(["require", "exports", 'jquery'], function (require, exports, $) {
                     onHasScrolled();
                     isScrolled = false;
                 }
-            }, 250);
+            }, speed);
         };
         Bootstrapper.prototype.setFooterHeight = function () {
             var $footer = $('.footer');

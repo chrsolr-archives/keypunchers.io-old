@@ -48,7 +48,7 @@ export class Bootstrapper {
                 isScrolled = false;
             }
 
-        }, 250);
+        }, speed);
     }
 
     setFooterHeight() {
