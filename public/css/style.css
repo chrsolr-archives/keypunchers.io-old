@@ -157,6 +157,9 @@ html {
 .no-right-padding {
   padding-right: 0 !important; }
 
+.dropdown-menu.open {
+  border-radius: 0; }
+
 .form-control-kp {
   border: none;
   border-bottom: solid 1px #cccccc;

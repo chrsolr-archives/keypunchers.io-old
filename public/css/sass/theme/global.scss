@@ -20,7 +20,6 @@
 
 .row { 
     margin: 0;
-
 }
 
 .no-left-padding {
@@ -29,6 +28,10 @@
 
 .no-right-padding {
     padding-right: 0 !important;
+}
+
+.dropdown-menu.open {
+    border-radius: 0;
 }
 
 .form-control-kp {
