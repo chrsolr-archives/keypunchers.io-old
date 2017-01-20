@@ -151,6 +151,13 @@ html {
 .row {
   margin: 0; }
 
+.form-control-kp {
+  border: none;
+  border-bottom: solid 1px #777777;
+  border-radius: 0;
+  margin-bottom: 20px;
+  box-shadow: none !important; }
+
 p, h1, h2, h3, h4, h5, h6, span, a, li, ol, i {
   color: #777777; }
 

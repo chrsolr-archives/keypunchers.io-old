@@ -5,12 +5,9 @@ block content
             form(method="POST")
                 h1 Create Blog
                 hr
-                input.form-control#blog-title(placeholder="Title", type="text", name="title")
-                <br/>
-                input.form-control#blog-image(placeholder="Image", type="text", name="image")
-                <br/>
-                textarea.form-control#blog-preview(placeholder="preview", name="preview")
-                <br/>
+                input.form-control.form-control-kp#blog-title(placeholder="Title", type="text", name="title")
+                input.form-control.form-control-kp#blog-image(placeholder="Image", type="text", name="image")
+                textarea.form-control.form-control-kp#blog-preview(placeholder="preview", name="preview", style="min-height: 100px", required)
                 textarea#md-editor(name="content")
                 
                 input.btn.btn-default(type="submit", value="Save")
@@ -19,20 +16,6 @@ block content
                 <br/>
     
     script.
-        requirejs(['/js/scripts/blog-create.js'], function(BlogCreate, ){
-            var blog_create = new BlogCreate.BlogCreate('md-editor');
-
-            $('form').submit(function(e) {
-                e.preventDefault();
-
-                var data = {
-                    imageUrl: $('[name="image"]').val(),
-                    title: $('[name="title"]').val(),
-                    preview: $('[name="preview"]').val()
-                };
-
-                blog_create.save(data).then(function(res) {
-                    alert('saved');
-                });
-            })
+        requirejs(['/js/scripts/blog-create.js'], function(BlogCreate){
+            new BlogCreate.BlogCreate('md-editor');
         });

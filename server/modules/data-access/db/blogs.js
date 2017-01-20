@@ -74,7 +74,7 @@ class BlogContext {
             var query = BlogModel.findOne();
             query.where('permalink').equals(permalink);
             query.populate('tags', '-_id');
-            query.populate('author', 'name -_id');
+            query.populate('author', '-_id');
             query.sort({ 'createdAt': -1 });
             query.exec((err, data) => {
                 if (err) { return reject(err); }
@@ -93,6 +93,8 @@ class BlogContext {
      */
     create(blog) {
         return new Promise((resolve, reject) => {
+            blog.permalink = blog.title.replace(/[^a-z0-9]+/gi, '-').replace(/^-*|-*$/g, '').toLowerCase();
+
             var Blog = new BlogModel(blog);
             Blog.save((err, blog) => {
                 if (err) {

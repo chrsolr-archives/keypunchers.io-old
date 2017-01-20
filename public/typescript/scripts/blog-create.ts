@@ -7,20 +7,39 @@ export class BlogCreate {
     simplemde: any;
 
     constructor(element_id: string) {
-        this.simplemde = new SimpleMDE({
+        const _this = this;
+
+        _this.simplemde = new SimpleMDE({
             element: document.getElementById(element_id),
-            previewRender: (text: string) => Marked(text)
+            previewRender: (text: string) => Marked(text),
+            promptURLs: true
+        });
+
+        $('form').submit(function (e: any) {
+            e.preventDefault();
+            _this.save();
         });
     }
 
-    save(data: any) {
-        data.content = Marked(this.simplemde.value());
-        
-        return $.ajax({
+    save() {
+        var data = {
+            imageUrl: $('[name="image"]').val(),
+            title: $('[name="title"]').val(),
+            preview: $('[name="preview"]').val(),
+            content: this.getText()
+        };
+
+        $.ajax({
             url: '/blogs/create',
             method: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json'
+        }).then(() => {
+            window.location.replace('/blogs');
         });
+    }
+
+    getText() {
+        return this.simplemde.value();
     }
 }

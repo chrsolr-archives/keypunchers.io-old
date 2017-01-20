@@ -1,6 +1,7 @@
 'use strict';
 
 const db = require('../modules/data-access/db');
+const marked = require('marked');
 
 exports.getBlogs = (req, res) => {
     const tag = req.query.tag;
@@ -21,10 +22,20 @@ exports.getBlogs = (req, res) => {
 exports.getBlogByPermalink = (req, res) => {
     const permalink = req.params.permalink;
 
-    db.blogs.getByPermalink(permalink).then((data) => res.render('partials/blog', { blog: data }));
+    db.blogs.getByPermalink(permalink).then((data) => {
+        if (data.type && data.type === 'Markdown') 
+            data.content = marked(data.content);
+            
+        return res.render('partials/blog', { blog: data });
+    });
 };
 
 exports.createBlog_Post = (req, res) => {
+    const blog = req.body;
+    blog.author = req.user._id;
+    blog.isActive = req.user.isAnAdmin;
+    blog.type = 'Markdown';
+
     db.blogs.create(req.body).then((data) => res.redirect('/blogs'));
 };
 
