@@ -21,6 +21,7 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select
                 content: this.getText(),
                 tags: $('#tag-select').selectpicker('val'),
                 type: $('#blog-type').selectpicker('val'),
+                isActive: $('#blog-active').selectpicker('val') === "1",
             };
             $.ajax({
                 url: '/blogs/create',

@@ -33,7 +33,6 @@ exports.getBlogByPermalink = (req, res) => {
 exports.createBlog_Post = (req, res) => {
     const blog = req.body;
     blog.author = req.user._id;
-    blog.isActive = req.user.isAnAdmin;
     blog.type = 'Markdown';
 
     db.blogs.create(req.body).then((data) => res.redirect('/blogs'));

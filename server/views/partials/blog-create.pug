@@ -26,6 +26,12 @@ block content
                             select.selectpicker#blog-type(data-width="100%")
                                 option(value="Markdown") Markdown
                                 option(value="Html") Html
+
+                    .col-xs-3
+                        .form-group
+                            select.selectpicker#blog-active(data-width="100%")
+                                option(value="1") Activate Blog
+                                option(value="0") De-activate Blog
                 
                 textarea#md-editor(name="content", style="display:none")
                 
