@@ -1,0 +1,32 @@
+extends ../layout.pug
+block content
+    section
+        .container
+            h1 Create Blog
+            textarea#md-editor
+            a(href="#", data-toggle="modal", data-target="#md-editor-preview-modal") Preview
+
+            
+
+    .modal.fade#md-editor-preview-modal(role="dialog", tabindex="-1")
+            .modal-dialog.modal-lg(role="document")
+                .modal-content
+                    .modal-header
+                        button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+                            span(aria-hidden="true") &times;
+                        h4.modal-title Blog Preview
+                    .modal-body
+                        div#md-editor-html-preview
+                    .modal-footer
+                        button.btn.btn-default(type="button", data-dismiss="modal") Close
+    
+    script.
+        requirejs(['/js/scripts/blog-create.js'], function(BlogCreate){
+            var blog_create = new BlogCreate.BlogCreate();
+
+            $('#md-editor-preview-modal').on('shown.bs.modal', function () {
+                var text = blog_create.getAsHtml();
+
+                $('#md-editor-html-preview').html(text);
+            });
+        });

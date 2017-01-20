@@ -25,3 +25,7 @@ exports.getBlogByPermalink = (req, res) => {
         return res.render('partials/blog', { blog: data });
     });
 };
+
+exports.createBlog = (req, res) => {
+    res.render('partials/blog-create');
+};
