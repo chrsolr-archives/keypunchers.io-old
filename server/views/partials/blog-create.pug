@@ -2,31 +2,37 @@ extends ../layout.pug
 block content
     section
         .container
-            h1 Create Blog
-            textarea#md-editor
-            a(href="#", data-toggle="modal", data-target="#md-editor-preview-modal") Preview
+            form(method="POST")
+                h1 Create Blog
+                hr
+                input.form-control#blog-title(placeholder="Title", type="text", name="title")
+                <br/>
+                input.form-control#blog-image(placeholder="Image", type="text", name="image")
+                <br/>
+                textarea.form-control#blog-preview(placeholder="preview", name="preview")
+                <br/>
+                textarea#md-editor(name="content")
+                
+                input.btn.btn-default(type="submit", value="Save")
 
-            
-
-    .modal.fade#md-editor-preview-modal(role="dialog", tabindex="-1")
-            .modal-dialog.modal-lg(role="document")
-                .modal-content
-                    .modal-header
-                        button(type="button", class="close", data-dismiss="modal", aria-label="Close")
-                            span(aria-hidden="true") &times;
-                        h4.modal-title Blog Preview
-                    .modal-body
-                        div#md-editor-html-preview
-                    .modal-footer
-                        button.btn.btn-default(type="button", data-dismiss="modal") Close
+                <br/>
+                <br/>
     
     script.
-        requirejs(['/js/scripts/blog-create.js'], function(BlogCreate){
-            var blog_create = new BlogCreate.BlogCreate();
+        requirejs(['/js/scripts/blog-create.js'], function(BlogCreate, ){
+            var blog_create = new BlogCreate.BlogCreate('md-editor');
 
-            $('#md-editor-preview-modal').on('shown.bs.modal', function () {
-                var text = blog_create.getAsHtml();
+            $('form').submit(function(e) {
+                e.preventDefault();
 
-                $('#md-editor-html-preview').html(text);
-            });
+                var data = {
+                    imageUrl: $('[name="image"]').val(),
+                    title: $('[name="title"]').val(),
+                    preview: $('[name="preview"]').val()
+                };
+
+                blog_create.save(data).then(function(res) {
+                    alert('saved');
+                });
+            })
         });

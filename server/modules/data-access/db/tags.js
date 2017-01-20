@@ -3,7 +3,7 @@
 /**
  * @requires module:../models/Tag
  */
-const model = require('../models/Tag');
+const TagModel = require('../models/Tag');
 
 /**
  * @class TagContext
@@ -26,7 +26,7 @@ class TagContext {
         query = query || {};
 
         return new Promise((resolve, reject) => {
-            var _query = model.find({}, '-_id');
+            var _query = TagModel.find({}, '-_id');
             _query.limit(query.limit || 10);
             _query.sort({ name: 1 });
             _query.exec((err, data) => {

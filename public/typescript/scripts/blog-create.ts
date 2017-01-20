@@ -6,15 +6,21 @@ import * as Marked from 'marked';
 export class BlogCreate {
     simplemde: any;
 
-    constructor() {
-        this.simplemde = new SimpleMDE({ element: $("#md-editor")[0] });
+    constructor(element_id: string) {
+        this.simplemde = new SimpleMDE({
+            element: document.getElementById(element_id),
+            previewRender: (text: string) => Marked(text)
+        });
     }
 
-    save() {
-        console.log('Save Called!!!');
-    }
-
-    getAsHtml() {
-        return Marked(this.simplemde.value());
+    save(data: any) {
+        data.content = Marked(this.simplemde.value());
+        
+        return $.ajax({
+            url: '/blogs/create',
+            method: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json'
+        });
     }
 }

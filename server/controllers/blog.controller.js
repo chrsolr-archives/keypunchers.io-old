@@ -21,11 +21,13 @@ exports.getBlogs = (req, res) => {
 exports.getBlogByPermalink = (req, res) => {
     const permalink = req.params.permalink;
 
-    db.blogs.getByPermalink(permalink).then((data) => {
-        return res.render('partials/blog', { blog: data });
-    });
+    db.blogs.getByPermalink(permalink).then((data) => res.render('partials/blog', { blog: data }));
+};
+
+exports.createBlog_Post = (req, res) => {
+    db.blogs.create(req.body).then((data) => res.redirect('/blogs'));
 };
 
 exports.createBlog = (req, res) => {
-    res.render('partials/blog-create');
+    return res.render('partials/blog-create');
 };

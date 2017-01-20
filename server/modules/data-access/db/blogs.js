@@ -3,7 +3,7 @@
 /**
  * @requires module:../models/Blog
  */
-const model = require('../models/Blog');
+const BlogModel = require('../models/Blog');
 
 /**
  * @class BlogContext
@@ -26,7 +26,7 @@ class BlogContext {
         query = query || {};
 
         return new Promise((resolve, reject) => {
-            var _query = model.find(query);
+            var _query = BlogModel.find(query);
             _query.sort({ 'createdAt': -1 });
             _query.limit(query.limit || 10);
             _query.exec((err, data) => {
@@ -46,7 +46,7 @@ class BlogContext {
      */
     getByTag(tag) {
         return new Promise((resolve, reject) => {
-            var query = model.find();
+            var query = BlogModel.find();
             query.populate('tags', '-_id');
             query.sort({ 'createdAt': -1 });
             query.lean();
@@ -71,7 +71,7 @@ class BlogContext {
      */
     getByPermalink(permalink) {
         return new Promise((resolve, reject) => {
-            var query = model.findOne();
+            var query = BlogModel.findOne();
             query.where('permalink').equals(permalink);
             query.populate('tags', '-_id');
             query.populate('author', 'name -_id');
@@ -80,6 +80,26 @@ class BlogContext {
                 if (err) { return reject(err); }
 
                 return resolve(data);
+            });
+        });
+    }
+
+    /**
+     * @function create
+     * @desc Create a Blog Post
+     * 
+     * @param {} Blog object
+     * @returns Returns saved blog post from the database
+     */
+    create(blog) {
+        return new Promise((resolve, reject) => {
+            var Blog = new BlogModel(blog);
+            Blog.save((err, blog) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                return resolve(blog);
             });
         });
     }
