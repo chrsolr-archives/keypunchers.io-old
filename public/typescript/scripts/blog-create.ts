@@ -1,3 +1,4 @@
+/// <amd-dependency path="bootstrap_select" />
 
 import * as $ from 'jquery';
 import * as SimpleMDE from 'simplemde';
@@ -26,9 +27,11 @@ export class BlogCreate {
             imageUrl: $('[name="image"]').val(),
             title: $('[name="title"]').val(),
             preview: $('[name="preview"]').val(),
-            content: this.getText()
+            content: this.getText(),
+            tags: $('#tag-select').selectpicker('val'),
+            type: $('#blog-type').selectpicker('val'),
         };
-
+        
         $.ajax({
             url: '/blogs/create',
             method: 'POST',

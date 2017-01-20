@@ -151,10 +151,22 @@ html {
 .row {
   margin: 0; }
 
+.no-left-padding {
+  padding-left: 0 !important; }
+
+.no-right-padding {
+  padding-right: 0 !important; }
+
 .form-control-kp {
   border: none;
-  border-bottom: solid 1px #777777;
+  border-bottom: solid 1px #cccccc;
   border-radius: 0;
+  margin-bottom: 20px;
+  box-shadow: none !important; }
+
+.form-control-textarea {
+  border: solid 1px #cccccc;
+  border-radius: 4px;
   margin-bottom: 20px;
   box-shadow: none !important; }
 

@@ -20,12 +20,28 @@
 
 .row { 
     margin: 0;
+
+}
+
+.no-left-padding {
+    padding-left: 0 !important;
+}
+
+.no-right-padding {
+    padding-right: 0 !important;
 }
 
 .form-control-kp {
     border: none;
-    border-bottom: solid 1px $color-gray; 
+    border-bottom: solid 1px $color-light-gray; 
     border-radius: 0;
+    margin-bottom: spacing(4);
+    box-shadow: none !important;
+}
+
+.form-control-textarea {
+    border: solid 1px $color-light-gray; 
+    border-radius: 4px;
     margin-bottom: spacing(4);
     box-shadow: none !important;
 }

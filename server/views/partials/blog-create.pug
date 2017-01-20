@@ -5,10 +5,29 @@ block content
             form(method="POST")
                 h1 Create Blog
                 hr
-                input.form-control.form-control-kp#blog-title(placeholder="Title", type="text", name="title")
-                input.form-control.form-control-kp#blog-image(placeholder="Image", type="text", name="image")
-                textarea.form-control.form-control-kp#blog-preview(placeholder="preview", name="preview", style="min-height: 100px", required)
-                textarea#md-editor(name="content")
+                .row
+                    .col-xs-6.no-left-padding
+                        .form-group
+                            input.form-control.form-control-kp#blog-title(placeholder="Title", type="text", name="title")
+                    .col-xs-6.no-left-padding.no-right-padding
+                        .form-group        
+                            input.form-control.form-control-kp#blog-image(placeholder="Image", type="text", name="image")
+                
+                textarea.form-control.form-control-textarea#blog-preview(placeholder="preview", name="preview", style="min-height: 100px", required)
+                
+                .row
+                    .col-xs-3.no-left-padding
+                        .form-group
+                            select.selectpicker#tag-select(multiple, data-width="100%", title="Tags")
+                                each tag in tags
+                                    option(value=tag._id) #{tag.name}
+                    .col-xs-3
+                        .form-group
+                            select.selectpicker#blog-type(data-width="100%")
+                                option(value="Markdown") Markdown
+                                option(value="Html") Html
+                
+                textarea#md-editor(name="content", style="display:none")
                 
                 input.btn.btn-default(type="submit", value="Save")
 

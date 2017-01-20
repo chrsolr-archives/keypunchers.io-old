@@ -26,7 +26,7 @@ class TagContext {
         query = query || {};
 
         return new Promise((resolve, reject) => {
-            var _query = TagModel.find({}, '-_id');
+            var _query = TagModel.find({});
             _query.limit(query.limit || 10);
             _query.sort({ name: 1 });
             _query.exec((err, data) => {

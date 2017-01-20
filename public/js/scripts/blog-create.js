@@ -1,4 +1,4 @@
-define(["require", "exports", 'jquery', 'simplemde', 'marked'], function (require, exports, $, SimpleMDE, Marked) {
+define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select"], function (require, exports, $, SimpleMDE, Marked) {
     "use strict";
     var BlogCreate = (function () {
         function BlogCreate(element_id) {
@@ -18,7 +18,9 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked'], function (requir
                 imageUrl: $('[name="image"]').val(),
                 title: $('[name="title"]').val(),
                 preview: $('[name="preview"]').val(),
-                content: this.getText()
+                content: this.getText(),
+                tags: $('#tag-select').selectpicker('val'),
+                type: $('#blog-type').selectpicker('val'),
             };
             $.ajax({
                 url: '/blogs/create',

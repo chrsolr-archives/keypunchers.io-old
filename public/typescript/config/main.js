@@ -8,11 +8,15 @@ requirejs.config({
         Bootstrapper: 'js/modules/bootstrapper',
         prism: 'libs/prism/prism',
         simplemde: 'libs/simplemde/dist/simplemde.min',
-        marked: 'libs/marked/lib/marked'
+        marked: 'libs/marked/lib/marked',
+        bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min'
     },
     shim: {
         bootstrap: {
             deps: ['jquery']
+        },
+        bootstrap_select: {
+            deps: ['bootstrap']
         }
     }
 });

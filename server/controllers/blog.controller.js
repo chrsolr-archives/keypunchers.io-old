@@ -40,5 +40,5 @@ exports.createBlog_Post = (req, res) => {
 };
 
 exports.createBlog = (req, res) => {
-    return res.render('partials/blog-create');
+    db.tags.getAll().then((tags) => res.render('partials/blog-create', { tags }));
 };
