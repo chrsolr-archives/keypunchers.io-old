@@ -33,7 +33,6 @@ export class BlogCreate {
                 _this.save();
             });
         });
-
     }
 
     save() {
