@@ -1,4 +1,5 @@
 /// <amd-dependency path="bootstrap_select" />
+/// <amd-dependency path="bootstrap_validator" />
 /// <reference path="../../../typings/tsd.d.ts" />
 
 import * as $ from 'jquery';
@@ -21,12 +22,18 @@ export class BlogCreate {
             $('#tag-select').selectpicker();
             $('#blog-type').selectpicker();
             $('#blog-active').selectpicker();
+
+            $('form').validator().on('submit', (e: JQueryEventObject) => {
+                const is_valid = !e.isDefaultPrevented();
+                
+                if (!is_valid) return;
+
+                e.preventDefault();
+
+                _this.save();
+            });
         });
 
-        $('form').submit(function (e: any) {
-            e.preventDefault();
-            _this.save();
-        });
     }
 
     save() {

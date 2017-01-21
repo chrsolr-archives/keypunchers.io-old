@@ -9,15 +9,13 @@ requirejs.config({
         prism: 'libs/prism/prism',
         simplemde: 'libs/simplemde/dist/simplemde.min',
         marked: 'libs/marked/marked.min',
-        bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min'
+        bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min',
+        bootstrap_validator: '/libs/bootstrap-validator/dist/validator.min'
     },
     shim: {
-        bootstrap: {
-            deps: ['jquery']
-        },
-        bootstrap_select: {
-            deps: ['jquery', 'bootstrap']
-        },
+        bootstrap: { deps: ['jquery'] },
+        bootstrap_select: { deps: ['jquery', 'bootstrap'] },
+        bootstrap_validator: { deps: ['jquery', 'bootstrap'] },
         prism: { exports: 'prism' }
     }
 });

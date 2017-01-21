@@ -1,4 +1,4 @@
-define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select"], function (require, exports, $, SimpleMDE, Marked) {
+define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select", "bootstrap_validator"], function (require, exports, $, SimpleMDE, Marked) {
     "use strict";
     var BlogCreate = (function () {
         function BlogCreate(element_id) {
@@ -12,10 +12,13 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select
                 $('#tag-select').selectpicker();
                 $('#blog-type').selectpicker();
                 $('#blog-active').selectpicker();
-            });
-            $('form').submit(function (e) {
-                e.preventDefault();
-                _this.save();
+                $('form').validator().on('submit', function (e) {
+                    var is_valid = !e.isDefaultPrevented();
+                    if (!is_valid)
+                        return;
+                    e.preventDefault();
+                    _this.save();
+                });
             });
         }
         BlogCreate.prototype.save = function () {

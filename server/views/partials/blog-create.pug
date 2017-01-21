@@ -2,19 +2,21 @@ extends ../layout.pug
 block content
     section
         .container
-            form(method="POST")
+            form(method="POST", role="form", data-toggle="validator")
                 h1 Create Blog
                 hr
                 .row
                     .col-xs-6.no-left-padding
                         .form-group
-                            input.form-control.form-control-kp#blog-title(placeholder="Title", type="text", name="title")
+                            input.form-control.form-control-kp#blog-title(placeholder="Title", type="text", name="title", data-minlength="5", data-error="Title is required", required)
+
                     .col-xs-6.no-left-padding.no-right-padding
                         .form-group        
-                            input.form-control.form-control-kp#blog-image(placeholder="Image", type="text", name="image")
-                
-                textarea.form-control.form-control-textarea#blog-preview(placeholder="Preview Text...", name="preview", style="min-height: 100px", required)
-                
+                            input.form-control.form-control-kp#blog-image(placeholder="Image", type="text", name="image", data-minlength="5", data-error="Image Url is required", required)
+
+                .form-group
+                    textarea.form-control.form-control-textarea#blog-preview(placeholder="Preview Text...", name="preview", style="min-height: 100px", data-minlength="5", data-error="Preview text is required", required)
+
                 .row
                     .col-xs-3.no-left-padding
                         .form-group
