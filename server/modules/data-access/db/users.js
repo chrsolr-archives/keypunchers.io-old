@@ -28,6 +28,7 @@ class UserContext {
 
             var query = UserModel.findOne();
             query.where(delimiter).equals(profile[profile.provider].id);
+            query.lean();
             query.exec((err, user) => {
                 if (err) {
                     return reject(err);
@@ -62,6 +63,7 @@ class UserContext {
 
             var query = UserModel.findOne();
             query.where(delimiter).equals(profile[profile.provider].id);
+            query.lean();
             query.exec((err, user) => {
                 if (err) {
                     return reject(err);
@@ -105,7 +107,7 @@ class UserContext {
      */
     getById(id) {
         return new Promise((resolve, reject) => {
-            UserModel.findOne({ _id: id }).exec((err, user) => {
+            UserModel.findOne({ _id: id }).lean().exec((err, user) => {
                 if (err) {
                     return reject(err);
                 }

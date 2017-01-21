@@ -29,6 +29,7 @@ class BlogContext {
             var _query = BlogModel.find(query);
             _query.sort({ 'createdAt': -1 });
             _query.limit(query.limit || 10);
+            _query.lean();
             _query.exec((err, data) => {
                 if (err) { return reject(err); }
 
@@ -53,9 +54,7 @@ class BlogContext {
             query.exec((err, data) => {
                 if (err) { return reject(err); }
 
-                data = data.filter((obj) => {
-                    return obj.tags.find(t => (t.name === tag));
-                });
+                data = data.filter((obj) => obj.tags.find(t => (t.name === tag)));
 
                 return resolve(data || []);
             });
@@ -76,6 +75,7 @@ class BlogContext {
             query.populate('tags', '-_id');
             query.populate('author', '-_id');
             query.sort({ 'createdAt': -1 });
+            query.lean();
             query.exec((err, data) => {
                 if (err) { return reject(err); }
 

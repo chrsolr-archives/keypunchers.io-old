@@ -29,6 +29,7 @@ class TagContext {
             var _query = TagModel.find({});
             _query.limit(query.limit || 10);
             _query.sort({ name: 1 });
+            _query.lean();
             _query.exec((err, data) => {
                 if (err) { return reject(err); }
 
