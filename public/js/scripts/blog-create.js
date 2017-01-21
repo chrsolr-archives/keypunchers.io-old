@@ -8,6 +8,11 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select
                 previewRender: function (text) { return Marked(text); },
                 promptURLs: true
             });
+            $(document).ready(function () {
+                $('#tag-select').selectpicker();
+                $('#blog-type').selectpicker();
+                $('#blog-active').selectpicker();
+            });
             $('form').submit(function (e) {
                 e.preventDefault();
                 _this.save();

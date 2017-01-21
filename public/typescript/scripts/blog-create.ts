@@ -1,4 +1,5 @@
 /// <amd-dependency path="bootstrap_select" />
+/// <reference path="../../../typings/tsd.d.ts" />
 
 import * as $ from 'jquery';
 import * as SimpleMDE from 'simplemde';
@@ -14,6 +15,12 @@ export class BlogCreate {
             element: document.getElementById(element_id),
             previewRender: (text: string) => Marked(text),
             promptURLs: true
+        });
+
+        $(document).ready(() => {
+            $('#tag-select').selectpicker();
+            $('#blog-type').selectpicker();
+            $('#blog-active').selectpicker();
         });
 
         $('form').submit(function (e: any) {

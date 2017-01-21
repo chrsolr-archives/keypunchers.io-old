@@ -18,7 +18,7 @@ block content
                 .row
                     .col-xs-3.no-left-padding
                         .form-group
-                            select.selectpicker#tag-select(multiple, data-width="100%", title="Tags")
+                            select.selectpicker#tag-select(multiple, data-width="100%", title="Tags", data-size="6")
                                 each tag in tags
                                     option(value=tag._id) #{tag.name}
                     .col-xs-3

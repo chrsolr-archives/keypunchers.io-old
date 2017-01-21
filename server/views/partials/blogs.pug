@@ -7,7 +7,8 @@ block content
                 .col-sm-8
                     each blog in blogs
                         article.blog-wrapper
-                            img.img-respoinsive(src=blog.imageUrl, alt=blog.title width="100%")
+                            a(href="/blogs/" + blog.permalink)
+                                img.img-responsive(src=blog.imageUrl, alt=blog.title width="100%")
                             a.title(href="/blogs/" + blog.permalink) #{blog.title}
                             p  #{blog.preview}
                             a(href="/blogs/" + blog.permalink) read more...

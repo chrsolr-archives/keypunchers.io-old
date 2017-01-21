@@ -16,9 +16,9 @@ requirejs.config({
             deps: ['jquery']
         },
         bootstrap_select: {
-            deps: ['bootstrap']
+            deps: ['jquery', 'bootstrap']
         },
-        prism: { exports: 'prism'}
+        prism: { exports: 'prism' }
     }
 });
 

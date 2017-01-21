@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/tsd.d.ts" />
+
 import * as $ from 'jquery';
 
 export class Bootstrapper {
@@ -15,7 +17,7 @@ export class Bootstrapper {
         var delta = 5;
         var speed = 250;
 
-        $(window).scroll(function () {
+        $(window).scroll(() => {
             isScrolled = true;
         });
 
@@ -40,14 +42,11 @@ export class Bootstrapper {
             lastPosition = top;
         }
 
-        setInterval(function () {
-
+        setInterval(() => {
             if (isScrolled) {
                 onHasScrolled();
-
                 isScrolled = false;
             }
-
         }, speed);
     }
 
