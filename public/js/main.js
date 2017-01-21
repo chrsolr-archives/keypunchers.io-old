@@ -8,7 +8,7 @@ requirejs.config({
         Bootstrapper: 'js/modules/bootstrapper',
         prism: 'libs/prism/prism',
         simplemde: 'libs/simplemde/dist/simplemde.min',
-        marked: 'libs/marked/lib/marked',
+        marked: 'libs/marked/marked.min',
         bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min'
     },
     shim: {
@@ -17,7 +17,8 @@ requirejs.config({
         },
         bootstrap_select: {
             deps: ['bootstrap']
-        }
+        },
+        prism: { exports: 'prism'}
     }
 });
 
