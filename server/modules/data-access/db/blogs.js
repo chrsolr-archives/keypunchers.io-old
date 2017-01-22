@@ -95,13 +95,12 @@ class BlogContext {
         return new Promise((resolve, reject) => {
             blog.permalink = blog.title.replace(/[^a-z0-9]+/gi, '-').replace(/^-*|-*$/g, '').toLowerCase();
 
-            var Blog = new BlogModel(blog);
-            Blog.save((err, blog) => {
-                if (err) {
-                    return reject(err);
-                }
+            const query = BlogModel.findByIdAndUpdate(blog._id, blog, { 'new': true, upsert: true, setDefaultsOnInsert: true });
+            query.lean();
+            query.exec((err, doc) => {
+                if (err) { return reject(err); }
 
-                return resolve(blog);
+                return resolve(doc);
             });
         });
     }
