@@ -23,9 +23,9 @@ exports.getBlogByPermalink = (req, res) => {
     const permalink = req.params.permalink;
 
     db.blogs.getByPermalink(permalink).then((data) => {
-        if (data.type && data.type === 'Markdown') 
+        if (data.type && data.type === 'Markdown')
             data.content = marked(data.content);
-            
+
         return res.render('partials/blog', { blog: data });
     });
 };
@@ -34,7 +34,16 @@ exports.createBlog_Post = (req, res) => {
     const blog = req.body;
     blog.author = req.user._id;
 
-    db.blogs.create(req.body).then((data) => res.redirect('/blogs'));
+    if (blog.new_tags) {
+        db.tags.addTags(blog.new_tags).then((data) => {
+            delete blog.new_tags;
+            blog.tags = blog.tags.concat(data);
+            
+            db.blogs.create(blog).then(() => res.redirect('/blogs'));
+        });
+    } else {
+        db.blogs.create(blog).then(() => res.redirect('/blogs'));
+    }
 };
 
 exports.createBlog = (req, res) => {

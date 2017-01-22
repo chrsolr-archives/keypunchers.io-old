@@ -37,6 +37,48 @@ class TagContext {
             });
         });
     }
+
+    /**
+     * @function addTags
+     * @desc Add new tags to database
+     * 
+     * @param Array tags Array of new tags
+     * @returns Returns Prosime
+     */
+    addTags(tags) {
+        if (typeof tags === 'string' || tags instanceof String) {
+            tags = [tags];
+        }
+
+        return new Promise((resolve, reject) => {
+            var _query = TagModel.find({});
+            _query.where('name');
+            _query.in(tags);
+            _query.exec((err, old_tags) => {
+                if (err) { return reject(err); }
+
+                tags.forEach((value) => {
+                    old_tags.forEach((obj) => {
+                        if (value === obj.name) {
+                            tags.splice(tags.indexOf(value), 1);
+                        }
+                    });
+                });
+
+                tags = tags.map((value) => {
+                    return { name: value };
+                });
+
+                TagModel.insertMany(tags, (err, docs) => {
+                    if (err) { return reject(err); }
+
+                    const new_tag_ids = docs.map((obj) => obj._id);
+                    
+                    return resolve(new_tag_ids);
+                });
+            });
+        });
+    }
 }
 
 /**

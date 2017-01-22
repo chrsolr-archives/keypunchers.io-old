@@ -31,6 +31,10 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select
                 type: $('#blog-type').selectpicker('val'),
                 isActive: $('#blog-active').selectpicker('val') === "1",
             };
+            var new_tags = $('#blog-new-tags').val().split(', ');
+            if (new_tags.length && new_tags[0]) {
+                data.new_tags = new_tags;
+            }
             $.ajax({
                 url: '/blogs/create',
                 method: 'POST',

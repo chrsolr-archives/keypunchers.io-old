@@ -18,22 +18,26 @@ block content
                     textarea.form-control.form-control-textarea#blog-preview(placeholder="Preview Text...", name="preview", style="min-height: 100px", data-minlength="5", data-error="Preview text is required", required)
 
                 .row
-                    .col-xs-3.no-left-padding
+                    .col-sm-3.no-left-padding
                         .form-group
                             select.selectpicker#tag-select(multiple, data-width="100%", title="Tags", data-size="6")
                                 each tag in tags
                                     option(value=tag._id) #{tag.name}
-                    .col-xs-3
+                    .col-sm-3.no-left-padding
                         .form-group
                             select.selectpicker#blog-type(data-width="100%")
                                 option(value="Markdown") Markdown
                                 option(value="Html") Html
 
-                    .col-xs-3
+                    .col-sm-3.no-left-padding
                         .form-group
                             select.selectpicker#blog-active(data-width="100%")
                                 option(value="1") Activate Blog
                                 option(value="0") De-activate Blog
+                                
+                    .col-sm-3.no-right-padding.no-left-padding
+                        .form-group
+                            input.form-control.form-control-textarea#blog-new-tags(placeholder="Add Tags", type="text", name="new-tags")                            
                 
                 textarea#md-editor(name="content", style="display:none")
                 

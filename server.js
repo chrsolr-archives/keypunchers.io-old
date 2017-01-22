@@ -8,6 +8,7 @@ if (config.server.ENV === 'DEV') {
     //TODO: USE MORGAN FOR LOGGING
 }
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.db.URL, (err) => {
     if (err) {
         throw new Error(err);

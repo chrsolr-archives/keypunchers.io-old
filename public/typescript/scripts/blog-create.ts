@@ -36,7 +36,7 @@ export class BlogCreate {
     }
 
     save() {
-        var data = {
+        const data = {
             imageUrl: $('[name="image"]').val(),
             title: $('[name="title"]').val(),
             preview: $('[name="preview"]').val(),
@@ -45,6 +45,12 @@ export class BlogCreate {
             type: $('#blog-type').selectpicker('val'),
             isActive: $('#blog-active').selectpicker('val') === "1",
         };
+
+        const new_tags = $('#blog-new-tags').val().split(', ');
+
+        if (new_tags.length && new_tags[0]) {
+            data.new_tags = new_tags;
+        }
 
         $.ajax({
             url: '/blogs/create',
