@@ -26,14 +26,9 @@ gulp.task('minify-css', ['autoprefixer'], () => {
         .pipe(gulp.dest(config.paths.CSS));
 });
 
-gulp.task('copy-require-main-js', ['copy-jquery-private-js'], () => {
+gulp.task('copy-require-main-js', () => {
     return gulp.src(`${config.paths.TYPESCRIPT}config/main.js`)
     .pipe(gulp.dest(config.paths.JS));
-});
-
-gulp.task('copy-jquery-private-js', () => {
-    return gulp.src(`${config.paths.TYPESCRIPT}config/jquery-private.js`)
-    .pipe(gulp.dest(`${config.paths.JS}/scripts`));
 });
 
 gulp.task('tsconfig', () => {
