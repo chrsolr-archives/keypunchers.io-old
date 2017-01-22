@@ -35,7 +35,7 @@ function stragetyHandler(profile, req, done) {
 
         return db.users.linkAccount(profile)
             .then((res) => done(null, res), (err) => done(new Error(err), null));
-    } else {}
+    }
 
     return db.users.login(profile)
         .then((res) => done(null, res), (err) => done(new Error(err), null));

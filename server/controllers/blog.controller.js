@@ -23,8 +23,9 @@ exports.getBlogByPermalink = (req, res) => {
     const permalink = req.params.permalink;
 
     db.blogs.getByPermalink(permalink).then((data) => {
-        if (data.type && data.type === 'Markdown')
+        if (data.type && data.type === 'Markdown') {
             data.content = marked(data.content);
+        }
 
         return res.render('partials/blog', { blog: data });
     });

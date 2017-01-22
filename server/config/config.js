@@ -52,7 +52,7 @@ const config = (() => {
                 `**/typescript/**/*.ts`
             ],
             tsConfig: {
-                "compilerOptions": {
+                'compilerOptions': {
                     module: 'amd',
                     target: 'es5',
                     removeComments: true,
