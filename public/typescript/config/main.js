@@ -4,6 +4,7 @@ requirejs.config({
     baseUrl: '/',
     paths: {
         jquery: 'libs/jquery/dist/jquery.min',
+        'jquery-private': 'js/scripts/jquery-private',
         bootstrap: 'libs/bootstrap/dist/js/bootstrap.min',
         Bootstrapper: 'js/modules/bootstrapper',
         prism: 'libs/prism/prism',
@@ -14,13 +15,17 @@ requirejs.config({
     },
     shim: {
         bootstrap: { deps: ['jquery'] },
-        bootstrap_select: { deps: ['jquery', 'bootstrap'] },
-        bootstrap_validator: { deps: ['jquery', 'bootstrap'] },
+        bootstrap_select: { deps: ['bootstrap'] },
+        bootstrap_validator: { deps: ['bootstrap'] },
         prism: { exports: 'prism' }
+    },
+    map: {
+        '*': { 'jquery': 'jquery-private' },
+        'jquery-private': { 'jquery': 'jquery' }
     }
 });
 
-requirejs(['Bootstrapper', 'jquery', 'bootstrap'], function (Bootstrapper) {
+requirejs(['Bootstrapper'], function (Bootstrapper) {
     'use strict';
     new Bootstrapper.Bootstrapper().initialize();
 });
