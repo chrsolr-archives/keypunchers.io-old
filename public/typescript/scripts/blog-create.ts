@@ -15,13 +15,16 @@ export class BlogCreate {
         _this.simplemde = new SimpleMDE({
             element: document.getElementById(element_id),
             previewRender: (text: string) => Marked(text),
-            promptURLs: true
+            promptURLs: true,
+            autosave: {
+                enable: true,
+                uniqueid: 'simplemde_id',
+                delay: 10000
+            }
         });
 
         $(document).ready(() => {
-            $('#tag-select').selectpicker();
-            $('#blog-type').selectpicker();
-            $('#blog-active').selectpicker();
+            $('select').selectpicker();
 
             $('form').validator().on('submit', (e: JQueryEventObject) => {
                 const is_valid = !e.isDefaultPrevented();

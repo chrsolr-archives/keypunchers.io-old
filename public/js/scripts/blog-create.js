@@ -6,12 +6,15 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select
             _this.simplemde = new SimpleMDE({
                 element: document.getElementById(element_id),
                 previewRender: function (text) { return Marked(text); },
-                promptURLs: true
+                promptURLs: true,
+                autosave: {
+                    enable: true,
+                    uniqueid: 'simplemde_id',
+                    delay: 10000
+                }
             });
             $(document).ready(function () {
-                $('#tag-select').selectpicker();
-                $('#blog-type').selectpicker();
-                $('#blog-active').selectpicker();
+                $('select').selectpicker();
                 $('form').validator().on('submit', function (e) {
                     var is_valid = !e.isDefaultPrevented();
                     if (!is_valid)
