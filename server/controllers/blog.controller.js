@@ -36,7 +36,12 @@ exports.get_blog_by_permalink = (req, res) => {
             permalink: data.permalink,
             author: data.author[data.author.provider].name,
             comments: (!data.comments) ? [] : data.comments.map(value => {
-                return { author: value.author[value.author.provider].name, content: value.content, createdAt: value.createdAt };
+                return { 
+                    author: value.author[value.author.provider].name, 
+                    avatar: value.author[value.author.provider].image || '/assets/images/default-profile-image.jpg', 
+                    content: value.content, 
+                    createdAt: value.createdAt
+                };
             })
         };
 

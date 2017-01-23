@@ -264,6 +264,11 @@ a.bracket-animation {
     text-decoration: none;
     border-bottom: 1px dotted transparent; }
 
+.comment-block {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-bottom: 20px; }
+
 section.banner {
   min-height: 100vh; }
   section.banner .content {

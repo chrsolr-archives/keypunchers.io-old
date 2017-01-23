@@ -18,6 +18,17 @@ block content
                         each tag in blog.tags
                             li
                                 a.bracket-animation(href='/blogs?tag=' + tag.name) #{tag.name}
+                    hr
+                    h3.text-center Comments
+                    each comment in blog.comments
+                        .comment-block
+                            .media(style={marginLeft: 0})
+                                .media-left
+                                    img.img-circle.img-border-circle.media-object(src=comment.avatar, width="50px", alt="Profile Image")
+                                .media-body
+                                    h4.media-heading #{comment.author}
+                                    p #{comment.content}
+                                    p.small Created At: #{moment(comment.createdAt).format("MM/DD/YYYY")}
         
     script.
         requirejs(['/js/scripts/blog.js']);
