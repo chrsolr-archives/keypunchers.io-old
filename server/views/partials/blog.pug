@@ -23,12 +23,12 @@ block content
                     each comment in blog.comments
                         .comment-block
                             .media(style={marginLeft: 0})
-                                .media-left
+                                .media-left.hidden-xs
                                     img.img-circle.img-border-circle.media-object(src=comment.avatar, width="50px", alt="Profile Image")
                                 .media-body
                                     h4.media-heading #{comment.author}
                                     p #{comment.content}
-                                    p.small Created At: #{moment(comment.createdAt).format("MM/DD/YYYY")}
+                                    p.small.pull-right Created At: #{moment(comment.createdAt).format("MM/DD/YYYY")}
         
     script.
         requirejs(['/js/scripts/blog.js']);

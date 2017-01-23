@@ -23,4 +23,12 @@
             }
         }
     }
+
+    .comment-block {
+        position: relative;
+        background-color: $color-off-white;
+        padding: spacing(4) spacing(2) spacing(2) spacing(2);
+        margin-bottom: spacing(4);
+        border-radius: 4px;
+    }
 }
