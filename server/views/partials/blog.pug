@@ -6,8 +6,8 @@ block content
                 .col-md-8.col-md-offset-2
                     img.img-responsive(src=blog.imageUrl)
                     h1 #{blog.title}
-                    if blog.author && blog.author[blog.author.provider].name
-                        p By #{blog.author[blog.author.provider].name}, Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
+                    if blog.author
+                        p By #{blog.author}, Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
                     else
                         p Published: #{moment(blog.createdAt).format("MM/DD/YYYY")}
                     hr

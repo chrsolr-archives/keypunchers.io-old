@@ -1,11 +1,8 @@
 'use strict';
 
 const slug = require('slug');
-
-/**
- * @requires module:../models/Blog
- */
 const BlogModel = require('../models/Blog');
+const CommentModel = require('../models/Comment');
 
 /**
  * @class BlogContext
@@ -76,8 +73,9 @@ class BlogContext {
             query.where('permalink').equals(permalink);
             query.populate('tags', '-_id');
             query.populate('author', '-_id');
-            query.sort({ 'createdAt': -1 });
+            query.populate({ path: 'comments', populate: { path: 'author' } });
             query.lean();
+            query.sort({ 'createdAt': -1 });
             query.exec((err, data) => {
                 if (err) { return reject(err); }
 
@@ -103,6 +101,29 @@ class BlogContext {
                 if (err) { return reject(err); }
 
                 return resolve(doc);
+            });
+        });
+    }
+
+    addComment(data) {
+        return new Promise((resolve, reject) => {
+            if (!data && !data.permalink) { return reject('Not Permalink Provided'); }
+
+            this.getByPermalink(data.permalink).then((blog) => {
+                if (!blog) { return reject({ message: 'Blog Post Not found', success: false, code: 404 }); }
+
+                const comment = new CommentModel(data);
+                comment.save((err, doc) => {
+                    if (err) { return reject(err); }
+
+                    const query = BlogModel.findByIdAndUpdate(blog._id, { $push: { comments: doc } }, { 'new': true });
+                    query.lean();
+                    query.exec((err, doc) => {
+                        if (err) { return reject(err); }
+
+                        return resolve(doc);
+                    });
+                });
             });
         });
     }

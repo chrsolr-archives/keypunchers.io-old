@@ -10,6 +10,7 @@ const BlogModel = (() => {
         permalink: { type: String, required: true },
         isActive: { type: Boolean, default: false },
         tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'tags' }],
+        comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comments' }],
         author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         createdAt: { type: Date, default: Date.now },
         updatedAt: { type: Date, default: Date.now },
