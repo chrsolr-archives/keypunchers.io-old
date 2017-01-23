@@ -1,5 +1,7 @@
 'use strict';
 
+const slug = require('slug');
+
 /**
  * @requires module:../models/Blog
  */
@@ -93,7 +95,7 @@ class BlogContext {
      */
     create(blog) {
         return new Promise((resolve, reject) => {
-            blog.permalink = blog.title.replace(/[^a-z0-9]+/gi, '-').replace(/^-*|-*$/g, '').toLowerCase();
+            blog.permalink = slug(blog.title, { lower: true });
 
             const query = BlogModel.findOneAndUpdate({ permalink: blog.permalink }, blog, { 'new': true, upsert: true, setDefaultsOnInsert: true });
             query.lean();
