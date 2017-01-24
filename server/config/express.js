@@ -7,12 +7,16 @@ const session = require('express-session');
 const passport = require('./passport');
 const app = express();
 const path = require('path');
+const helmet = require('helmet');
 
 process.env.NODE_ENV = config.server.ENV;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({ secret: config.server.SECRET, saveUninitialized: false, resave: false }));
+app.use(helmet.noCache());
+app.use(helmet.frameguard());
+app.use(helmet.xssFilter());
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(express.static('public'));
