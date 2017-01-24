@@ -5,7 +5,7 @@ const gulp = require('gulp');
 const glp = require('gulp-load-plugins')({ lazy: true });
 
 gulp.task('sass-compile', () => {
-    return gulp.src(config.paths.CSS + 'sass/style.scss')
+    return gulp.src(config.paths.SASS + 'style.scss')
         .pipe(glp.sass().on('error', glp.sass.logError))
         .pipe(gulp.dest(config.paths.CSS));
 });

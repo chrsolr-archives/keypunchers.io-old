@@ -1,9 +1,10 @@
 .c9
 .idea
 typings
+public/js
 node_modules
-npm-debug.log
 public/libs/*
+npm-debug.log
 bower_components
 public/css/*.css
 !public/css/style.css
