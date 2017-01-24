@@ -2,7 +2,7 @@
 
 import * as $ from 'jquery';
 
-export class Bootstrapper {
+class Bootstrapper {
     constructor() { }
 
     initialize() {
@@ -58,3 +58,5 @@ export class Bootstrapper {
         $footer.css({ opacity: 1 });
     }
 }
+
+export = Bootstrapper;

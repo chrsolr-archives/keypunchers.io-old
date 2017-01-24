@@ -107,7 +107,7 @@ class BlogContext {
 
     addComment(data) {
         return new Promise((resolve, reject) => {
-            if (!data && !data.permalink) { return reject('Not Permalink Provided'); }
+            if (!data || !data.permalink) { return reject('Not Permalink Provided'); }
 
             this.getByPermalink(data.permalink).then((blog) => {
                 if (!blog) { return reject({ message: 'Blog Post Not found', success: false, code: 404 }); }

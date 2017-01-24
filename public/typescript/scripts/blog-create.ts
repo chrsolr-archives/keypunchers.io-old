@@ -6,7 +6,7 @@ import * as $ from 'jquery';
 import * as SimpleMDE from 'simplemde';
 import * as Marked from 'marked';
 
-export class BlogCreate {
+class BlogCreate {
     simplemde: any;
 
     constructor(element_id: string) {
@@ -69,3 +69,5 @@ export class BlogCreate {
         return this.simplemde.value();
     }
 }
+
+export = BlogCreate;

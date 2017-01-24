@@ -23,5 +23,5 @@ requirejs.config({
 
 requirejs(['Bootstrapper'], function (Bootstrapper) {
     'use strict';
-    new Bootstrapper.Bootstrapper().initialize();
+    new Bootstrapper().initialize();
 });

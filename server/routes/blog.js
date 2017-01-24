@@ -8,7 +8,7 @@ const mountRoutes = (app) => {
     app.get('/blogs/create', common.middlewares.isAuthenticatedAndAdmin, blog_controller.create_blog_GET);
     app.post('/blogs/create', common.middlewares.isAuthenticatedAndAdmin, blog_controller.create_blog_POST);
     app.get('/blogs/:permalink', blog_controller.get_blog_by_permalink);
-    app.post('/api/v1/blogs/comment', common.middlewares.isAuthenticated, blog_controller.add_blog_comment);
+    app.post('/blogs/:permalink', common.middlewares.isAuthenticated, blog_controller.add_blog_comment);
 };
 
 exports.mountRoutes = mountRoutes;

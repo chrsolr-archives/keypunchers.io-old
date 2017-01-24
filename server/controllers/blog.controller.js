@@ -36,16 +36,18 @@ exports.get_blog_by_permalink = (req, res) => {
             permalink: data.permalink,
             author: data.author[data.author.provider].name,
             comments: (!data.comments) ? [] : data.comments.map(value => {
-                return { 
-                    author: value.author[value.author.provider].name, 
-                    avatar: value.author[value.author.provider].image || '/assets/images/default-profile-image.jpg', 
-                    content: value.content, 
+                return {
+                    author: value.author[value.author.provider].name,
+                    avatar: value.author[value.author.provider].image || '/assets/images/default-profile-image.jpg',
+                    content: value.content,
                     createdAt: value.createdAt
                 };
             })
         };
 
-        return res.render('partials/blog', { blog: blog });
+        return res.render('partials/blog', {
+            blog: blog
+        });
     });
 };
 
@@ -66,12 +68,17 @@ exports.create_blog_POST = (req, res) => {
 };
 
 exports.create_blog_GET = (req, res) => {
-    db.tags.getAll().then((tags) => res.render('partials/blog-create', { tags }));
+    db.tags.getAll().then((tags) => res.render('partials/blog-create', {
+        tags
+    }));
 };
 
 exports.add_blog_comment = (req, res) => {
-    const comment = req.body;
-    comment.author = req.user._id;
+    const comment = {
+        content: req.body.comment_post,
+        permalink: req.params.permalink,
+        author: req.user._id
+    };
 
     db.blogs.addComment(comment).then((blog) => {
         return res.redirect(`/blogs/${blog.permalink}`);
