@@ -1,6 +1,6 @@
 /// <amd-dependency path="bootstrap_select" />
 /// <amd-dependency path="bootstrap_validator" />
-/// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../../typings/index.d.ts" />
 
 import * as $ from 'jquery';
 import * as SimpleMDE from 'simplemde';
