@@ -40,6 +40,6 @@ block content
                                 textarea.form-control.form-control-textarea#blog-preview(placeholder="Leave a comment...", name="comment_post", style="min-height: 150px; resize: none;", data-minlength="3", maxlength="500", required)
                                 input.btn.btn-default.pull-right(type="submit", value="Submit")
     script.
-        requirejs(['/js/scripts/blog.js', '/libs/prism/prism.js'], function(Blog) {
+        requirejs(['/js/scripts/blog.js', 'prism'], function(Blog) {
             new Blog();
         });
