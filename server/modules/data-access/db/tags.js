@@ -66,7 +66,7 @@ class TagContext {
                 });
 
                 tags = tags.map((value) => {
-                    return { name: value };
+                    return { name: value, name_canonical: value.trim().toLowerCase() };
                 });
 
                 TagModel.insertMany(tags, (err, docs) => {

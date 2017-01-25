@@ -53,7 +53,7 @@ class BlogContext {
             query.exec((err, data) => {
                 if (err) { return reject(err); }
 
-                data = data.filter((obj) => obj.tags.find(t => (t.name === tag)));
+                data = data.filter((obj) => obj.tags.find(t => (t.name_canonical === tag.toLowerCase())));
 
                 return resolve(data || []);
             });
