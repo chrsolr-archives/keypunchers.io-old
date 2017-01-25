@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "start": "node server.js",
-    "postinstall": "bower cache clean && bower install && gulp"
+    "postinstall": "bower cache clean && bower install"
   },
   "author": "Christian Soler",
   "license": "ISC",
@@ -15,7 +15,6 @@
     "bower": "^1.7.9",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
-    "gulp": "^3.9.1",
     "helmet": "^3.4.0",
     "jsonwebtoken": "^7.1.9",
     "marked": "^0.3.6",
