@@ -32,7 +32,7 @@ define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select
                 content: this.getText(),
                 tags: $('#tag-select').selectpicker('val'),
                 type: $('#blog-type').selectpicker('val'),
-                isActive: $('#blog-active').selectpicker('val') === "1",
+                isActive: $('#blog-active').selectpicker('val') === "1"
             };
             var new_tags = $('#blog-new-tags').val().split(', ');
             if (new_tags.length && new_tags[0]) {
