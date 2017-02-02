@@ -46,6 +46,7 @@
     "gulp-tsconfig": "^0.1.0",
     "gulp-typescript": "^2.13.6",
     "mocha": "^3.0.2",
+    "prismjs": "^1.6.0",
     "typescript": "^1.8.10"
   }
 }

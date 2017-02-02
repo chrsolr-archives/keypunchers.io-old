@@ -2,7 +2,9 @@
 
 const config = require('./server/config/config');
 const gulp = require('gulp');
-const glp = require('gulp-load-plugins')({ lazy: true });
+const glp = require('gulp-load-plugins')({
+    lazy: true
+});
 
 gulp.task('sass-compile', () => {
     return gulp.src(config.paths.SASS + 'style.scss')
@@ -12,11 +14,11 @@ gulp.task('sass-compile', () => {
 
 gulp.task('autoprefixer', ['sass-compile'], () =>
     gulp.src(config.paths.CSS + 'style.css')
-        .pipe(glp.autoprefixer({
-            browsers: ['last 4 versions'],
-            cascade: false
-        }))
-        .pipe(gulp.dest(config.paths.CSS))
+    .pipe(glp.autoprefixer({
+        browsers: ['last 4 versions'],
+        cascade: false
+    }))
+    .pipe(gulp.dest(config.paths.CSS))
 );
 
 gulp.task('minify-css', ['autoprefixer'], () => {
@@ -28,7 +30,29 @@ gulp.task('minify-css', ['autoprefixer'], () => {
 
 gulp.task('copy-require-main-js', () => {
     return gulp.src(`${config.paths.TYPESCRIPT}config/main.js`)
-    .pipe(gulp.dest(config.paths.JS));
+        .pipe(gulp.dest(config.paths.JS));
+});
+
+gulp.task('prismjs-js', ['prismjs-css'], () => {
+    const languages = [
+        './node_modules/prismjs/prism.js',
+        './node_modules/prismjs/components/prism-csharp.min.js',
+        './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js',
+    ];
+
+    return gulp.src(languages)
+    .pipe(glp.concat('prism.js'))
+    .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
+});
+
+gulp.task('prismjs-css', () => {
+    const themes = [
+        './node_modules/prismjs/themes/prism-okaidia.css',
+        './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css'
+    ];
+    return gulp.src(themes)
+    .pipe(glp.concat('prism.css'))
+    .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
 });
 
 gulp.task('tsconfig', () => {
@@ -57,4 +81,4 @@ gulp.task('ts-compile-no-deps', () => {
         .pipe(gulp.dest(`${config.paths.JS}`));
 });
 
-gulp.task('default', ['minify-css', 'ts-compile', 'copy-require-main-js']);
+gulp.task('default', ['minify-css', 'ts-compile', 'prismjs-js', 'copy-require-main-js']);

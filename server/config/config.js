@@ -44,7 +44,8 @@ const config = (() => {
         JS: `${CLIENT}js/`,
         VIEWS: `${CLIENT}partials/`,
         TYPESCRIPT: `${CLIENT}typescript/`,
-        SASS: `${CLIENT}sass/`
+        SASS: `${CLIENT}sass/`,
+        LIBS: `${CLIENT}libs/`
     };
 
     const gulp = {
