@@ -46,7 +46,7 @@ class BlogCreate {
             content: this.getText(),
             tags: $('#tag-select').selectpicker('val'),
             type: $('#blog-type').selectpicker('val'),
-            isActive: $('#blog-active').selectpicker('val') === "1",
+            isActive: $('#blog-active').selectpicker('val') === "1"
         };
 
         const new_tags = $('#blog-new-tags').val().split(', ');
