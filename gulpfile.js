@@ -44,6 +44,7 @@ gulp.task('prismjs-js', ['prismjs-css'], () => {
 
     return gulp.src(languages)
         .pipe(glp.concat('prism.js'))
+        .pipe(glp.minify(config.gulp.minify_opts))
         .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
 });
 
@@ -56,6 +57,8 @@ gulp.task('prismjs-css', () => {
 
     return gulp.src(themes)
         .pipe(glp.concat('prism.css'))
+        .pipe(glp.cssnano(config.gulp.cssnanoOpts))
+        .pipe(glp.rename('prism.min.css'))
         .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
 });
 

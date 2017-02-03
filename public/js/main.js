@@ -6,7 +6,7 @@ requirejs.config({
         jquery: 'libs/jquery/dist/jquery.min',
         bootstrap: 'libs/bootstrap/dist/js/bootstrap.min',
         Bootstrapper: 'js/modules/bootstrapper.min',
-        prism: 'libs/prism/prism',
+        prism: 'libs/prism/prism.min',
         clipboard: 'libs/clipboard/dist/clipboard.min',
         simplemde: 'libs/simplemde/dist/simplemde.min',
         marked: 'libs/marked/marked.min',
