@@ -10,6 +10,10 @@
 .blog-container {
     padding-bottom: spacing(4); 
 
+    a {
+        color: $color-brand-secondary;
+    }
+
     .tags {
         text-align: center;
         padding: 0;

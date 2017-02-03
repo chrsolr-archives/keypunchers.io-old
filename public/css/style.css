@@ -291,6 +291,8 @@ section.banner {
 
 .blog-container {
   padding-bottom: 20px; }
+  .blog-container a {
+    color: #cc3434; }
   .blog-container .tags {
     text-align: center;
     padding: 0; }
