@@ -6,5 +6,6 @@ public/libs/*
 npm-debug.log
 bower_components
 public/css/*.css
+!public/libs/prism
 !public/css/style.css
 !public/css/style.min.css
