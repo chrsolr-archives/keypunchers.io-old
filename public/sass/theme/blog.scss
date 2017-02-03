@@ -12,6 +12,11 @@
 
     a {
         color: $color-brand-secondary;
+        font-weight: $font-weight-bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .tags {

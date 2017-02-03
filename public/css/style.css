@@ -292,7 +292,10 @@ section.banner {
 .blog-container {
   padding-bottom: 20px; }
   .blog-container a {
-    color: #cc3434; }
+    color: #cc3434;
+    font-weight: 600; }
+    .blog-container a:hover {
+      text-decoration: underline; }
   .blog-container .tags {
     text-align: center;
     padding: 0; }
