@@ -9,9 +9,6 @@ define(["require", "exports", 'jquery', "bootstrap_validator"], function (requir
                         return;
                     $('form').find(':submit').attr('disabled', 'disabled');
                 });
-                $('pre').each(function (index, element) {
-                    $(this).addClass('line-numbers');
-                });
             });
         }
         return Blog;

@@ -36,8 +36,7 @@ gulp.task('copy-require-main-js', () => {
 gulp.task('prismjs-js', ['prismjs-css'], () => {
     const languages = [
         './node_modules/prismjs/prism.js',
-        './node_modules/prismjs/components/prism-csharp.min.js',
-        './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js',
+        './node_modules/prismjs/components/prism-csharp.min.js'
     ];
 
     return gulp.src(languages)
@@ -47,8 +46,7 @@ gulp.task('prismjs-js', ['prismjs-css'], () => {
 
 gulp.task('prismjs-css', () => {
     const themes = [
-        './node_modules/prismjs/themes/prism-okaidia.css',
-        './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css'
+        './node_modules/prismjs/themes/prism-okaidia.css'
     ];
     return gulp.src(themes)
     .pipe(glp.concat('prism.css'))

@@ -13,10 +13,6 @@ class Blog {
 
                 $('form').find(':submit').attr('disabled','disabled');
             });
-
-            $('pre').each(function (index, element){
-                $(this).addClass('line-numbers');
-            });
         });
     }
 }
