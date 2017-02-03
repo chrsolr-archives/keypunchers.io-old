@@ -193,6 +193,9 @@ pre {
   border: none;
   border-radius: 0; }
 
+pre[class*="language-"] {
+  margin: 1rem 0; }
+
 a.title {
   position: relative;
   font-size: 30px;
