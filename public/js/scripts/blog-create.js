@@ -1,4 +1,4 @@
-define(["require", "exports", 'jquery', 'simplemde', 'marked', "bootstrap_select", "bootstrap_validator"], function (require, exports, $, SimpleMDE, Marked) {
+define(["require", "exports", "jquery", "simplemde", "marked", "bootstrap_select", "bootstrap_validator"], function (require, exports, $, SimpleMDE, Marked) {
     "use strict";
     var BlogCreate = (function () {
         function BlogCreate(element_id) {

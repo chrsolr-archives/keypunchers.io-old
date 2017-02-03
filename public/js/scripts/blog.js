@@ -1,4 +1,4 @@
-define(["require", "exports", 'jquery', "bootstrap_validator"], function (require, exports, $) {
+define(["require", "exports", "jquery", "bootstrap_validator"], function (require, exports, $) {
     "use strict";
     var Blog = (function () {
         function Blog() {

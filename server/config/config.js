@@ -57,15 +57,21 @@ const config = (() => {
                 'compilerOptions': {
                     module: 'amd',
                     target: 'es5',
+                    allowJs: false,
                     removeComments: true,
-                    noImplicitAny: true,
-                    sourceMap: true,
-                    noImplicitReturns: true,
+                    noImplicitAny: false,
+                    sourceMap: false,
+                    noImplicitReturns: false,
                     suppressImplicitAnyIndexErrors: true,
+                    suppressExcessPropertyErrors: true,
                     noFallthroughCasesInSwitch: true,
                     allowUnreachableCode: false,
-                    outDir: `${paths.JS}`,
-                    declaration: true
+                    rootDir: `${paths.TYPESCRIPT}`,
+                    //outDir: `${paths.JS}`,
+                    declaration: true,
+                    alwaysStrict: true,
+                    noEmitOnError: false,
+                    noEmit: false
                 }
             }
         },

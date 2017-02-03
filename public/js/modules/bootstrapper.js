@@ -1,4 +1,4 @@
-define(["require", "exports", 'jquery'], function (require, exports, $) {
+define(["require", "exports", "jquery"], function (require, exports, $) {
     "use strict";
     var Bootstrapper = (function () {
         function Bootstrapper() {
