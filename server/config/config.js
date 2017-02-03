@@ -73,7 +73,8 @@ const config = (() => {
             ext: {
                 min: '.min.js'
             },
-            ignoreFiles: ['-min.js', '.min.js']
+            ignoreFiles: ['-min.js', '.min.js'],
+            mangle: true
         },
         nodemon_opts: {
             script: 'server.js',

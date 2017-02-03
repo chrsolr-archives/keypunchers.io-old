@@ -5,8 +5,9 @@ requirejs.config({
     paths: {
         jquery: 'libs/jquery/dist/jquery.min',
         bootstrap: 'libs/bootstrap/dist/js/bootstrap.min',
-        Bootstrapper: 'js/modules/bootstrapper',
+        Bootstrapper: 'js/modules/bootstrapper.min',
         prism: 'libs/prism/prism',
+        clipboard: 'libs/clipboard/dist/clipboard.min',
         simplemde: 'libs/simplemde/dist/simplemde.min',
         marked: 'libs/marked/marked.min',
         bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min',
@@ -17,7 +18,7 @@ requirejs.config({
         bootstrap: { deps: ['jquery'] },
         bootstrap_select: { deps: ['bootstrap'] },
         bootstrap_validator: { deps: ['bootstrap'] },
-        prism: { exports: 'prism' }
+        prism: { exports: 'prism', deps: ['clipboard'] }
     }
 });
 

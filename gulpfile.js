@@ -36,21 +36,25 @@ gulp.task('copy-require-main-js', () => {
 gulp.task('prismjs-js', ['prismjs-css'], () => {
     const languages = [
         './node_modules/prismjs/prism.js',
-        './node_modules/prismjs/components/prism-csharp.min.js'
+        './node_modules/prismjs/components/prism-csharp.min.js',
+        './node_modules/prismjs/plugins/toolbar/prism-toolbar.min.js',
+        './node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js'
     ];
 
     return gulp.src(languages)
-    .pipe(glp.concat('prism.js'))
-    .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
+        .pipe(glp.concat('prism.js'))
+        .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
 });
 
 gulp.task('prismjs-css', () => {
     const themes = [
-        './node_modules/prismjs/themes/prism-okaidia.css'
+        './node_modules/prismjs/themes/prism-okaidia.css',
+        './node_modules/prismjs/plugins/toolbar/prism-toolbar.css',
     ];
+
     return gulp.src(themes)
-    .pipe(glp.concat('prism.css'))
-    .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
+        .pipe(glp.concat('prism.css'))
+        .pipe(gulp.dest(`${config.paths.LIBS}prism/`));
 });
 
 gulp.task('tsconfig', () => {
@@ -67,15 +71,7 @@ gulp.task('ts-compile', ['tsconfig'], () => {
 
     return tsProject.src()
         .pipe(ts(tsProject)).js
-        .pipe(gulp.dest(`${config.paths.JS}`));
-});
-
-gulp.task('ts-compile-no-deps', () => {
-    var ts = glp.typescript;
-    var tsProject = ts.createProject('./tsconfig.json');
-
-    return tsProject.src()
-        .pipe(ts(tsProject)).js
+        .pipe(glp.minify(config.gulp.minify_opts))
         .pipe(gulp.dest(`${config.paths.JS}`));
 });
 
