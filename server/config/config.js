@@ -59,7 +59,7 @@ const config = (() => {
                     target: 'es5',
                     allowJs: false,
                     removeComments: true,
-                    noImplicitAny: false,
+                    noImplicitAny: true,
                     sourceMap: false,
                     noImplicitReturns: false,
                     suppressImplicitAnyIndexErrors: true,
