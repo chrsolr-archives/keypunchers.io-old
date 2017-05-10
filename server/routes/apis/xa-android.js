@@ -5,7 +5,8 @@ const mountRoutes = (app) => {
         return res.json({
             version_code: 1,
             version_name: '0.0.2',
-            download_url: 'https://www.androidfilehost.com/?fid=529152257862725423'
+            xda_thread_url: 'https://forum.xda-developers.com/android/apps-games/app-xa-unofficial-xboxachievements-com-t3600450',
+            download_url: 'https://forum.xda-developers.com/attachment.php?attachmentid=4141216&d=1494138063'
         });
     });
 };
