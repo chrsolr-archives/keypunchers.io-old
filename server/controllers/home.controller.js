@@ -7,3 +7,7 @@ exports.getIndex = (req, res) => {
 exports.getAbout = (req, res) => {
     return res.render('partials/about');
 };
+
+exports.getXaTOS = (req, res) => {
+    return res.render('partials/xa-tos');
+};
