@@ -5,6 +5,22 @@
     border: 1px solid #f0f0f0;
 }
 
+.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+}
+
+.text-thin {
+    font-weight: $font-weight-thin;
+}
+
+.text-bold {
+    font-weight: $font-weight-bold;
+}
+
+.text-2x {
+    font-size: 2rem;
+}
+
 .animation-delay-500ms {
     @include animation-delay(500ms);
 }

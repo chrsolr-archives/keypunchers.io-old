@@ -132,6 +132,18 @@ html {
   padding: 2px;
   border: 1px solid #f0f0f0; }
 
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); }
+
+.text-thin {
+  font-weight: 200; }
+
+.text-bold {
+  font-weight: 600; }
+
+.text-2x {
+  font-size: 2rem; }
+
 .animation-delay-500ms {
   -webkit-animation-delay: 500ms;
   animation-delay: 500ms; }

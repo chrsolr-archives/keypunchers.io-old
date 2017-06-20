@@ -32,6 +32,7 @@ app.use((req, res, next) => {
 
 require('../routes/home').mountRoutes(app);
 require('../routes/blog').mountRoutes(app);
+require('../routes/portfolio').mountRoutes(app);
 require('../routes/apis/xa-android').mountRoutes(app);
 require('../routes/auth').mountRoutes(app);
 require('../routes/user').mountRoutes(app);
