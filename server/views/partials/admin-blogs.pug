@@ -1,0 +1,25 @@
+extends ../layout.pug
+block content
+    section
+        .container
+            h1 Blogs
+            hr
+
+            .table-responsive
+                table.table.table-bordered
+                    tr.active
+                        th Title
+                        th Is Active
+                        th Manage
+                    each blog in blogs
+                        tr
+                            td #{blog.title}
+                            td #{blog.isActive}
+                            td
+                                .dropdown
+                                    button.btn.btn-default.dropdown-toggle(type="button", id="dd-manage", data-toggle="dropdown", aria-haspopup="true", aria-expanded="true") Manage 
+                                        span.caret
+                                    ul.dropdown-menu(aria-labelledby="dd-manage")
+                                        li: a(href="/admin/blog/edit/" + blog.id) Edit
+                                        li: a(href="/admin/blog/delete/" + blog.id) Delete
+            a.btn.btn-default(href="/admin/blog/create") Create Blog

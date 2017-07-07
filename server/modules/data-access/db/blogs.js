@@ -38,6 +38,26 @@ class BlogContext {
     }
 
     /**
+     * @function getAll
+     * @desc Get all blogs from the database
+     * 
+     * @param {object} query MongoDB Query Object
+     * @returns Returns all blogs from the database
+     */
+    getAllAdmin() {
+        return new Promise((resolve, reject) => {
+            var _query = BlogModel.find();
+            _query.sort({ 'createdAt': -1 });
+            _query.lean();
+            _query.exec((err, data) => {
+                if (err) { return reject(err); }
+
+                return resolve(data);
+            });
+        });
+    }
+
+    /**
      * @function getByTag
      * @desc Get all blogs by the tag name from the database
      * 
