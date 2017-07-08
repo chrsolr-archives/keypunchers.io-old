@@ -27,7 +27,8 @@ const mountRoutes = (app) => {
                 return {
                     title: val.title,
                     isActive: val.isActive,
-                    id: val._id
+                    id: val._id,
+                    permalink: val.permalink
                 }
             });
 
