@@ -105,6 +105,27 @@ class BlogContext {
     }
 
     /**
+     * @function getById
+     * @desc Get blog by id from the database
+     * 
+     * @param {string} id The ID use to find a specific blog post
+     * @returns Returns found blog post from the database
+     */
+    getById(id) {
+        return new Promise((resolve, reject) => {
+            var query = BlogModel.findOne();
+            query.where('_id').equals(id);
+            query.populate('tags', '-_id');
+            query.lean();
+            query.exec((err, data) => {
+                if (err) { return reject(err); }
+
+                return resolve(data);
+            });
+        });
+    }
+
+    /**
      * @function create
      * @desc Create a Blog Post
      * 

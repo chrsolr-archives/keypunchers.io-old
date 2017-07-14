@@ -42,6 +42,12 @@ const mountRoutes = (app) => {
         }));
     });
 
+    app.get('/admin/blog/edit/:id', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
+        const id = req.params.id;
+
+        db.blogs.getById(id).then((blog) => res.render('partials/blog-edit', { blog: blog } ));
+    });
+
     app.post('/blogs/create', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
         const blog = req.body;
         blog.author = req.user._id;
