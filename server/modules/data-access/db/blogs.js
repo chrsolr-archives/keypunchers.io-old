@@ -115,7 +115,7 @@ class BlogContext {
         return new Promise((resolve, reject) => {
             var query = BlogModel.findOne();
             query.where('_id').equals(id);
-            query.populate('tags', '-_id');
+            query.populate('tags');
             query.lean();
             query.exec((err, data) => {
                 if (err) { return reject(err); }
@@ -137,6 +137,25 @@ class BlogContext {
             blog.permalink = slug(blog.title, { lower: true });
 
             const query = BlogModel.findOneAndUpdate({ permalink: blog.permalink }, blog, { 'new': true, upsert: true, setDefaultsOnInsert: true });
+            query.lean();
+            query.exec((err, doc) => {
+                if (err) { return reject(err); }
+
+                return resolve(doc);
+            });
+        });
+    }
+
+    /**
+     * @function edit
+     * @desc Create a Blog Post
+     * 
+     * @param {} Blog object
+     * @returns Returns saved blog post from the database
+     */
+    edit(blog) {
+        return new Promise((resolve, reject) => {
+            const query = BlogModel.findOneAndUpdate({ _id: blog._id }, blog, { 'new': true, upsert: true, setDefaultsOnInsert: true });
             query.lean();
             query.exec((err, doc) => {
                 if (err) { return reject(err); }

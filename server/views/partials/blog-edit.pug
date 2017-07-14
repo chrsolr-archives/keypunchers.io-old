@@ -21,7 +21,7 @@ block content
                     .col-sm-3.no-left-padding
                         .form-group
                             select.selectpicker#tag-select(multiple, data-width="100%", title="Tags", data-size="6")
-                                each tag in blog.tags
+                                each tag in tags
                                     option(value=tag._id) #{tag.name}
                     .col-sm-3.no-left-padding
                         .form-group
@@ -47,6 +47,8 @@ block content
                 <br/>
     
     script.
+        var data = !{JSON.stringify(blog)};
+
         requirejs(['/js/scripts/blog-edit.min.js'], function(BlogCreate){
-            new BlogCreate('md-editor');
+            new BlogCreate('md-editor', data);
         });

@@ -13,7 +13,7 @@ const mountRoutes = (app) => {
         Promise.all([blogs, tags])
             .then(values => {
                 const data = {
-                    blogs: values[0],
+                    blogs: values[0].filter(val => val.isActive),
                     tags: values[1]
                 };
 
@@ -29,7 +29,7 @@ const mountRoutes = (app) => {
                     isActive: val.isActive,
                     id: val._id,
                     permalink: val.permalink
-                }
+                };
             });
 
             return res.render('partials/admin-blogs', {blogs});
@@ -42,13 +42,7 @@ const mountRoutes = (app) => {
         }));
     });
 
-    app.get('/admin/blog/edit/:id', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
-        const id = req.params.id;
-
-        db.blogs.getById(id).then((blog) => res.render('partials/blog-edit', { blog: blog } ));
-    });
-
-    app.post('/blogs/create', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
+    app.post('/admin/blog/create', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
         const blog = req.body;
         blog.author = req.user._id;
 
@@ -61,6 +55,38 @@ const mountRoutes = (app) => {
             });
         } else {
             db.blogs.create(blog).then(() => res.redirect('/blogs'));
+        }
+    });
+
+    app.get('/admin/blog/edit/:id', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
+        const id = req.params.id;
+        const tags = db.tags.getAll();
+        const blog = db.blogs.getById(id);
+
+        Promise.all([blog, tags])
+            .then(values => {
+                const data = {
+                    blog: values[0],
+                    tags: values[1]
+                };
+
+                return res.render('partials/blog-edit', data);
+            });
+    });
+
+    app.post('/admin/blog/edit/:id', common.middlewares.isAuthenticatedAndAdmin, (req, res) => {
+        const blog = req.body;
+        blog._id = req.params.id;
+
+        if (blog.new_tags) {
+            db.tags.addTags(blog.new_tags).then((data) => {
+                delete blog.new_tags;
+                blog.tags = blog.tags.concat(data);
+
+                db.blogs.edit(blog).then(() => res.redirect('/admin/blogs'));
+            });
+        } else {
+            db.blogs.edit(blog).then(() => res.redirect('/admin/blogs'));
         }
     });
 
