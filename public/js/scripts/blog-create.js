@@ -39,7 +39,7 @@ define(["require", "exports", "jquery", "simplemde", "marked", "bootstrap_select
                 data.new_tags = new_tags;
             }
             $.ajax({
-                url: '/blogs/create',
+                url: '/admin/blog/create',
                 method: 'POST',
                 data: JSON.stringify(data),
                 contentType: 'application/json'
