@@ -56,7 +56,7 @@ class BlogCreate {
         }
 
         $.ajax({
-            url: '/blogs/create',
+            url: '/admin/blog/create',
             method: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json'
