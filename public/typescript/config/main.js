@@ -12,7 +12,7 @@ requirejs.config({
         marked: 'libs/marked/marked.min',
         bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min',
         bootstrap_validator: '/libs/bootstrap-validator/dist/validator.min',
-        navstrap: '/libs/navstrap/dist/navstrap.min'
+        navstrap: '/libs/NavStrap/dist/navstrap.min'
     },
     shim: {
         Bootstrapper: { deps: ['jquery', 'bootstrap'] },
