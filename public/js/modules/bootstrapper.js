@@ -1,4 +1,4 @@
-define(["require", "exports", "jquery", "navstrap"], function (require, exports, $) {
+define(["require", "exports", "jquery", "bootstrap_autohide_navbar"], function (require, exports, $) {
     "use strict";
     var Bootstrapper = (function () {
         function Bootstrapper() {
@@ -8,7 +8,7 @@ define(["require", "exports", "jquery", "navstrap"], function (require, exports,
             this.setFooterHeight();
         };
         Bootstrapper.prototype.setHideNavbar = function () {
-            $('.navbar').NavStrap().ShowOrHideOnScroll();
+            $('.navbar').BootstrapAutoHideNavbar();
         };
         Bootstrapper.prototype.setFooterHeight = function () {
             var $footer = $('.footer');

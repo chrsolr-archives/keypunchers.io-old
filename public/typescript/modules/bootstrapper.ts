@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/index.d.ts" />
-/// <amd-dependency path="navstrap" />
+/// <amd-dependency path="bootstrap_autohide_navbar" />
 
 import * as $ from 'jquery';
 
@@ -12,7 +12,7 @@ class Bootstrapper {
     }
 
     setHideNavbar() {
-        $('.navbar').NavStrap().ShowOrHideOnScroll();
+        $('.navbar').BootstrapAutoHideNavbar();
     }
 
     setFooterHeight() {

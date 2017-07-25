@@ -12,14 +12,14 @@ requirejs.config({
         marked: 'libs/marked/marked.min',
         bootstrap_select: '/libs/bootstrap-select/dist/js/bootstrap-select.min',
         bootstrap_validator: '/libs/bootstrap-validator/dist/validator.min',
-        navstrap: '/libs/NavStrap/dist/navstrap.min'
+        bootstrap_autohide_navbar: '/libs/bootstrap-autohide-navbar/dist/bootstrap-autohide-navbar.min'
     },
     shim: {
         Bootstrapper: { deps: ['jquery', 'bootstrap'] },
         bootstrap: { deps: ['jquery'] },
         bootstrap_select: { deps: ['bootstrap'] },
         bootstrap_validator: { deps: ['bootstrap'] },
-        navstrap: { deps: ['bootstrap'] },
+        bootstrap_autohide_navbar: { deps: ['bootstrap'] },
         prism: { exports: 'prism', deps: ['clipboard'] }
     }
 });
