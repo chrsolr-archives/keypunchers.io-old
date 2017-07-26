@@ -26,6 +26,9 @@
     "bootstrap-select": "^1.12.1",
     "bootstrap-validator": "^0.11.9",
     "clipboard": "^1.5.16",
-    "bootstrap-autohide-navbar": "^0.0.1"
+    "bootstrap-autohide-navbar": "^0.0"
+  },
+  "resolutions": {
+    "bootstrap": "^3.3.7"
   }
 }
