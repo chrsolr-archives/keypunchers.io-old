@@ -47,7 +47,7 @@ block content
                 <br/>
     
     script.
-        var data = !{JSON.stringify(blog)};
+        var data = !{JSON.stringify(blog).replace(/<\//g, '<\\u002F')};
 
         requirejs(['/js/scripts/blog-edit.min.js'], function(BlogCreate){
             new BlogCreate('md-editor', data);
