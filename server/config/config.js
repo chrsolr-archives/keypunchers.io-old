@@ -34,6 +34,9 @@ const config = (() => {
             clientID: process.env.REDDIT_CLIENT_KEY || 'cVYX853F95qJ3Q',
             clientSecret: process.env.REDDIT_CLIENT_SECRET || '9OnQNqFpNSndXx6pOBI_LQoCZWw',
             callbackURL: process.env.REDDIT_CALLBACK || '/auth/reddit/callback'
+        },
+        sendgrid: {
+            key: process.env.SENDGRID_API_KEY || ''
         }
     };
 

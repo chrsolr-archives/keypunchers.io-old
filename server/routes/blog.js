@@ -1,5 +1,6 @@
 'use strict';
 
+const config = require('../config/config');
 const db = require('../modules/data-access/db');
 const common = require('../modules/common/common');
 const marked = require('marked');
@@ -32,7 +33,7 @@ const mountRoutes = (app) => {
                 };
             });
 
-            return res.render('partials/admin-blogs', {blogs});
+            return res.render('partials/admin-blogs', { blogs });
         });
     });
 
@@ -130,7 +131,37 @@ const mountRoutes = (app) => {
         };
 
         db.blogs.addComment(comment).then((blog) => {
-            return res.redirect(`/blogs/${blog.permalink}`);
+            const sendgrid = require('sendgrid')(config.apis.sendgrid.key);
+            const request = sendgrid.emptyRequest({
+                method: 'POST',
+                path: '/v3/mail/send',
+                body: {
+                    personalizations: [
+                        {
+                            to: [
+                                {
+                                    email: 'iamrelos@gmail.com'
+                                }
+                            ],
+                            subject: 'Blog Comment Post'
+                        }
+                    ],
+                    from: {
+                        email: 'blog@keypunchers.io'
+                    },
+                    content: [
+                        {
+                            type: 'text/plain',
+                            value: `http://www.keypunchers.io/blogs/${comment.permalink} \n\n\"${comment.content}\"`
+                        }
+                    ]
+                }
+            });
+
+            sendgrid.API(request).then(response => res.redirect(`/blogs/${blog.permalink}`)).catch((err) => {
+                err.response.body.errors.forEach((error) => console.log(error.message));
+                return res.redirect(`/blogs/${blog.permalink}`);
+            });
         });
     });
 };
