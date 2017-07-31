@@ -40,6 +40,8 @@ gulp.task('prismjs-js', ['prismjs-css'], () => {
         './node_modules/prismjs/components/prism-jade.min.js',
         './node_modules/prismjs/components/prism-typescript.min.js',
         './node_modules/prismjs/components/prism-scss.min.js',
+        './node_modules/prismjs/components/prism-bash.min.js',
+        './node_modules/prismjs/components/prism-markup.min.js',
         './node_modules/prismjs/plugins/toolbar/prism-toolbar.min.js',
         './node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js',
         './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js'
