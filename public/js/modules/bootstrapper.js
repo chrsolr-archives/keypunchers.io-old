@@ -8,7 +8,7 @@ define(["require", "exports", "jquery", "bootstrap_autohide_navbar"], function (
             this.setFooterHeight();
         };
         Bootstrapper.prototype.setHideNavbar = function () {
-            $('.navbar').BootstrapAutoHideNavbar();
+            $('.navbar').bootstrapAutoHideNavbar();
         };
         Bootstrapper.prototype.setFooterHeight = function () {
             var $footer = $('.footer');

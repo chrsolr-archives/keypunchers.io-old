@@ -12,7 +12,7 @@ class Bootstrapper {
     }
 
     setHideNavbar() {
-        $('.navbar').BootstrapAutoHideNavbar();
+        $('.navbar').bootstrapAutoHideNavbar();
     }
 
     setFooterHeight() {
