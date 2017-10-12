@@ -36,15 +36,15 @@ gulp.task('copy-require-main-js', () => {
 gulp.task('prismjs-js', ['prismjs-css'], () => {
     const languages = [
         './node_modules/prismjs/prism.js',
-        './node_modules/prismjs/components/prism-csharp.min.js',
-        './node_modules/prismjs/components/prism-jade.min.js',
-        './node_modules/prismjs/components/prism-typescript.min.js',
-        './node_modules/prismjs/components/prism-scss.min.js',
-        './node_modules/prismjs/components/prism-bash.min.js',
-        './node_modules/prismjs/components/prism-markup.min.js',
-        './node_modules/prismjs/plugins/toolbar/prism-toolbar.min.js',
-        './node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js',
-        './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js'
+        './node_modules/prismjs/components/prism-csharp.js',
+        './node_modules/prismjs/components/prism-jade.js',
+        './node_modules/prismjs/components/prism-typescript.js',
+        './node_modules/prismjs/components/prism-scss.js',
+        './node_modules/prismjs/components/prism-bash.js',
+        './node_modules/prismjs/components/prism-markup.js',
+        './node_modules/prismjs/plugins/toolbar/prism-toolbar.js',
+        './node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js'
+        //'./node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js'
     ];
 
     return gulp.src(languages)
